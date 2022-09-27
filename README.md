@@ -1,0 +1,4 @@
+- notification if icon is not valid
+- way to resend validation code
+- change password
+- change email

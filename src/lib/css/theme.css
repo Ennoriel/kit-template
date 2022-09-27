@@ -1,0 +1,11 @@
+body {
+	--primary-color: #002395;
+	--secondary-color: #ed1f3a;
+	--bg-color: #f7f7fa;
+	--header-height: 60px;
+}
+
+.icon {
+	width: 16px;
+	height: 16px;
+}
