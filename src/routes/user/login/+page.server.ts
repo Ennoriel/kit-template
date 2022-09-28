@@ -21,7 +21,7 @@ export const actions: Actions = {
 			return invalid(400, { error: 'The email and password should be provided' });
 		}
 
-		const dbUser = await getUser({ email });
+		const dbUser = await getUser({ email }, ['hash']);
 
 		if (!dbUser || !validate(password, dbUser.hash)) {
 			return invalid(400, { error: 'One of the email and login are invalid' });

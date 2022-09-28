@@ -4,6 +4,7 @@ import { getUser, createUser } from '$lib/server/db/users';
 import { sendMailConfirmAccount } from '$lib/utils/mail';
 import { crypt } from '../user.utils';
 import { invalid, redirect } from '@sveltejs/kit';
+import { PUBLIC_BASE_URL } from '$env/static/public';
 
 type User = {
 	email: string;
@@ -35,7 +36,7 @@ export const actions: Actions = {
 		if (newUser.validationCode) {
 			sendMailConfirmAccount(email, {
 				name: email,
-				validation_link: `http://localhost:5173/user/validate/${newUser.validationCode}`
+				validation_link: `${PUBLIC_BASE_URL}/user/validate/${newUser.validationCode}`
 			});
 		}
 

@@ -5,7 +5,7 @@ import { crypt } from '../../user.utils';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
-	const dbUser = await getUser({ 'passwordReset.code': params.code });
+	const dbUser = await getUser({ 'passwordReset.code': params.code }, ['passwordReset']);
 	if (!dbUser) {
 		throw error(404, 'Your password reset request has been lost. Please try again or contact us.');
 	}
@@ -22,7 +22,7 @@ export const load: PageServerLoad = async ({ params }) => {
 
 export const actions: Actions = {
 	default: async ({ params, request, url }) => {
-		const dbUser = await getUser({ 'passwordReset.code': params.code });
+		const dbUser = await getUser({ 'passwordReset.code': params.code }, ['passwordReset']);
 		if (!dbUser) {
 			return invalid(404, {
 				error: 'Your password reset request has been lost. Please try again or contact us.'

@@ -3,6 +3,7 @@ import { formDataToObject } from 'chyme';
 import { getUser, addResetPasswordCode } from '$lib/server/db/users';
 import { sendMailPasswordLost } from '$lib/utils/mail';
 import { invalid, redirect } from '@sveltejs/kit';
+import { PUBLIC_BASE_URL } from '$env/static/public';
 
 export const actions: Actions = {
 	default: async ({ request, url }) => {
@@ -17,12 +18,12 @@ export const actions: Actions = {
 
 		if (!dbUser) return invalid(400, { error: `Aucun compte trouvé avec l'email ${email} !` });
 
-		const user = await addResetPasswordCode(dbUser);
+		const passwordReset = await addResetPasswordCode(dbUser._id);
 
-		if (user.passwordReset) {
+		if (passwordReset) {
 			sendMailPasswordLost(email, {
 				name: email,
-				password_reset_link: `http://localhost:5173/user/password-reset/${user.passwordReset.code}`
+				password_reset_link: `${PUBLIC_BASE_URL}/user/password-reset/${passwordReset.code}`
 			});
 		}
 

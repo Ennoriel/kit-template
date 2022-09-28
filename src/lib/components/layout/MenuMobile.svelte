@@ -3,11 +3,11 @@
 	import { isOpen } from '$lib/store';
 	import { display, getActiveRoute, getRouteLabel, guard, ROUTES } from '$lib/data/routes';
 	import { page } from '$app/stores';
-	import XOrMenu from '$lib/components/svg/XOrMenu.svelte';
+	import { XOrMenu } from 'chyme-svelte';
 	import Fav from '$lib/components/atom/Fav.svelte';
-	import type { User } from 'src/routes/+layout.server';
+	import type { UserF } from '$lib/types/user.type';
 
-	export let session: User | undefined = undefined;
+	export let session: UserF | undefined = undefined;
 
 	let burgerMenu: HTMLDivElement;
 
@@ -24,14 +24,14 @@
 <nav>
 	<span id="menu-bar">
 		<Fav />
-		<button class="open-menu" on:click|stopPropagation={() => $isOpen = !$isOpen}>
+		<button class="open-menu" on:click|stopPropagation={() => ($isOpen = !$isOpen)}>
 			<XOrMenu visible={!$isOpen} />
 		</button>
 	</span>
 
 	{#if $isOpen}
 		<div class="menu" transition:fly={{ x: -200, duration: 400 }}>
-			<Fav bg={false} on:click={() => ($isOpen = false)}/>
+			<Fav bg={false} on:click={() => ($isOpen = false)} />
 			{#each displayedRoutes as route}
 				{#if 'spacer' in route}
 					<hr />
@@ -44,8 +44,8 @@
 				{:else}
 					{@const active = activeRoute?.route === route.route}
 					<a
-						data-sveltekit-prefetch={route.prefetch ? "" : "off"}
-						on:click={() => $isOpen = false}
+						data-sveltekit-prefetch={route.prefetch ? '' : 'off'}
+						on:click={() => ($isOpen = false)}
 						href={route.route}
 						class:active
 						aria-current={(active && 'page') || undefined}
@@ -147,7 +147,8 @@
 		border-bottom: 0.1px solid var(--primary-color);
 	}
 
-	.menu a, .menu button {
+	.menu a,
+	.menu button {
 		display: block;
 		text-decoration: none;
 		border: none;

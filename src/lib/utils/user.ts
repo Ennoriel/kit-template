@@ -2,11 +2,7 @@ import jsonwebtoken from 'jsonwebtoken';
 import { parse } from 'cookie';
 import { getUser } from '$lib/server/db/users';
 import { ObjectId } from 'mongodb';
-
-export type FrontUser = {
-	_id: string;
-	email: string;
-};
+import type { UserS } from '$lib/types/user.type';
 
 export async function verifyUser(request: Request) {
 	const cookie = request.headers.get('cookie');
@@ -16,7 +12,7 @@ export async function verifyUser(request: Request) {
 			const tokenUser = jsonwebtoken.verify(
 				session,
 				import.meta.env.VITE_JWT_SECRET as string
-			) as FrontUser;
+			) as UserS;
 			const dbUser = await getUser({ _id: new ObjectId(tokenUser._id) });
 
 			return {

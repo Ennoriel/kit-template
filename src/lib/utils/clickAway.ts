@@ -1,7 +1,10 @@
-export function clickAway(node: HTMLElement, method: () => void): { destroy: () => void } {
+export function clickAway(
+	node: HTMLElement,
+	method: (() => void) | undefined
+): { destroy: () => void } {
 	function listener(e: MouseEvent) {
 		if (!node.contains(e.target as HTMLElement)) {
-			method();
+			method?.();
 		}
 	}
 

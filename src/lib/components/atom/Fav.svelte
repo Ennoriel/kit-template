@@ -1,10 +1,16 @@
 <script lang="ts">
-	export let size: "s" | "m" = "m"
+	import { primaryColor } from '$lib/components/configuration/store';
+
+	export let size: 's' | 'm' = 'm';
 	export let bg = true;
 </script>
 
 <a href="/" on:click class="favicon">
-	<img src="/svg/favicon-{size}.svg?bg={bg}" aria-hidden="true" alt="" />
+	<img
+		src="/svg/favicon-{size}.svg?bg={bg}&color=%23{$primaryColor.slice(1, 7)}"
+		aria-hidden="true"
+		alt=""
+	/>
 </a>
 
 <style>

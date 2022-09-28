@@ -1,7 +1,7 @@
 import db from '$lib/server/db/db';
+import type { User } from '$lib/types/user.type';
 import { randomString } from 'chyme';
-import type { Filter, ObjectId, WithId } from 'mongodb';
-import type { User } from 'src/routes/+layout.server';
+import type { Filter, FindOptions, ObjectId, WithId } from 'mongodb';
 
 export async function createUser(user: User): Promise<User> {
 	await db.collection('users').insertOne(user);
@@ -9,29 +9,41 @@ export async function createUser(user: User): Promise<User> {
 	return user;
 }
 
-export async function getUsers() {
-	return (await db.collection('users').find<WithId<User>>({}).toArray()) || [];
+export async function getUsers<Field extends keyof User = 'email' | 'hasImage' | 'lastUpdated'>(
+	query: Filter<User> = {},
+	projectionFields: Array<Field> = []
+): Promise<Array<Pick<WithId<User>, Field | '_id'>>> {
+	const projection = projectionFields.length
+		? projectionFields.reduce(
+				(acc, field) => ((acc[field] = 1), acc),
+				{} as NonNullable<FindOptions['projection']>
+		  )
+		: { email: 1, hasImage: 1, lastUpdated: 1 };
+	return (await db.collection('users').find<WithId<User>>(query, { projection }).toArray()) || [];
 }
 
-export async function getUser(query: Filter<User> = {}) {
-	const users = (await db.collection('users').find<WithId<User>>(query).toArray()) || [];
+export async function getUser<Field extends keyof User = 'email' | 'hasImage' | 'lastUpdated'>(
+	query: Filter<User> = {},
+	projectionFields: Array<Field> = []
+): Promise<Pick<WithId<User>, Field | '_id'> | undefined> {
+	const users = await getUsers(query, projectionFields);
 	return users.length === 1 ? users[0] : undefined;
 }
 
-export async function validateUser(user: WithId<User>) {
+export async function validateUser(userId: ObjectId) {
 	const result = await db
 		.collection('users')
-		.updateOne({ _id: user._id }, { $set: { validated: true } });
+		.updateOne({ _id: userId }, { $set: { validated: true } });
 	return result;
 }
 
-export async function addResetPasswordCode(user: WithId<User>) {
+export async function addResetPasswordCode(userId: ObjectId) {
 	const passwordReset = {
 		code: randomString(32),
 		date: new Date()
 	};
-	await db.collection('users').updateOne({ _id: user._id }, { $set: { passwordReset } });
-	return { ...user, passwordReset };
+	await db.collection('users').updateOne({ _id: userId }, { $set: { passwordReset } });
+	return passwordReset;
 }
 
 export async function resetPassword(_id: ObjectId, hash: string) {

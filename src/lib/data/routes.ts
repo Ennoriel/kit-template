@@ -1,10 +1,10 @@
-import type { User } from 'src/routes/+layout.server';
+import type { UserF } from '$lib/types/user.type';
 
 export type Route = {
 	route: string;
 	label?: string;
-	getLabel?: (session: User | undefined) => string;
-	guard?: (session: User | undefined) => boolean;
+	getLabel?: (session: UserF | undefined) => string;
+	guard?: (session: UserF | undefined) => boolean;
 	display?: (config?: { mobile: boolean }) => boolean;
 	class?: string;
 	subRoutes?: Array<Route>;
@@ -49,17 +49,17 @@ export const ROUTES: Array<Route | Spacer> = [
 	}
 ];
 
-export function loggedGuard(session: User | undefined) {
+export function loggedGuard(session: UserF | undefined) {
 	return !!session;
 }
 
-export function notLoggedGuard(session: User | undefined) {
+export function notLoggedGuard(session: UserF | undefined) {
 	return !session;
 }
 
 export const guard = (
 	routes: Array<Route | Spacer>,
-	session: User | undefined
+	session: UserF | undefined
 ): Array<Route | Spacer> => {
 	return routes.filter((route) => !('guard' in route) || !route.guard || route.guard(session));
 };
@@ -87,7 +87,7 @@ export function getActiveRoute(path: string, routes = ROUTES): Route | undefined
 	return onlyRoutes.find((r) => path.startsWith(r.route));
 }
 
-export function getRouteLabel(route: Route | Spacer, session: User | undefined) {
+export function getRouteLabel(route: Route | Spacer, session: UserF | undefined) {
 	const onlyRoute = getOnlyRoutes([route])?.[0];
 	if (onlyRoute) {
 		return 'getLabel' in onlyRoute && onlyRoute.getLabel

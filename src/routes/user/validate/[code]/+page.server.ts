@@ -3,7 +3,7 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
-	const dbUser = await getUser({ validationCode: params.code });
+	const dbUser = await getUser({ validationCode: params.code }, ['validated']);
 
 	if (dbUser) {
 		if (dbUser.validated) {
@@ -11,7 +11,7 @@ export const load: PageServerLoad = async ({ params }) => {
 				message: 'All good, your account has already been validated'
 			};
 		} else {
-			const result = await validateUser(dbUser);
+			const result = await validateUser(dbUser._id);
 			if (result.acknowledged && result.modifiedCount === 1) {
 				return {
 					message: 'All good, your account just got validated :)'
