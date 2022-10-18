@@ -2,7 +2,7 @@
 	import { display, getActiveRoute, getRouteLabel, guard, ROUTES } from '$lib/data/routes';
 	import { FormAction } from 'chyme-svelte';
 	import { page } from '$app/stores';
-	import Fav from '$lib/components/atom/Fav.svelte';
+	import FavLink from '$lib/components/atom/FavLink.svelte';
 	import type { UserF } from '$lib/types/user.type';
 
 	export let session: UserF | undefined = undefined;
@@ -13,7 +13,7 @@
 
 <nav>
 	<span class="menu">
-		<Fav />
+		<FavLink />
 		{#each displayedRoutes as route}
 			{#if 'spacer' in route}
 				<span style:flex-grow="1" />

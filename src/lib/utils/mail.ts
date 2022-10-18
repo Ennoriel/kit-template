@@ -42,7 +42,7 @@ export const sendMailConfirmAccount = async (
 	to: string,
 	variables: { name: string; validation_link: string }
 ) => {
-	// sendMail(to, '4154680', variables);
+	sendMail(to, '4154680', variables);
 	console.log(
 		'fake send mail to ' + variables.name + ' with validation link: ' + variables.validation_link
 	);
@@ -52,7 +52,7 @@ export const sendMailPasswordLost = async (
 	to: string,
 	variables: { name: string; password_reset_link: string }
 ) => {
-	// sendMail(to, '4154680', variables);
+	sendMail(to, '4154680', variables);
 	console.log(
 		'fake send mail to ' +
 			variables.name +

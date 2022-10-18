@@ -11,12 +11,15 @@ export const actions: Actions = {
 		const { email } = formDataToObject<{ email: string }>(body);
 
 		if (!email) {
-			return invalid(400, { error: 'Toutes les informations sont obligatoires' });
+			return invalid(400, { error: 'Please fill in your email' });
 		}
 
 		const dbUser = await getUser({ email });
 
-		if (!dbUser) return invalid(400, { error: `Aucun compte trouvé avec l'email ${email} !` });
+		if (!dbUser)
+			return invalid(400, {
+				error: `We are sorry, no account has been found with the email ${email} !`
+			});
 
 		const passwordReset = await addResetPasswordCode(dbUser._id);
 

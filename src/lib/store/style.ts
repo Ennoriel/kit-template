@@ -6,7 +6,7 @@ export const stylePropertyStore = (name: string, defaultValue: string) => {
 
 	store.subscribe((value) => {
 		if (typeof localStorage !== 'undefined') localStorage.setItem(name, value);
-		if (typeof window !== 'undefined') window.document.body.style.setProperty(name, value);
+		if (typeof window !== 'undefined') window.document.documentElement.style.setProperty(name, value);
 		return value;
 	});
 

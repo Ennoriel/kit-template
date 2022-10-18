@@ -1,16 +1,12 @@
 <script lang="ts">
 	import { primaryColor } from '$lib/components/configuration/store';
+	import Fav from '../svg/logo/Fav.svelte';
 
 	export let size: 's' | 'm' = 'm';
-	export let bg = true;
 </script>
 
 <a href="/" on:click class="favicon">
-	<img
-		src="/svg/favicon-{size}.svg?bg={bg}&color=%23{$primaryColor.slice(1, 7)}"
-		aria-hidden="true"
-		alt=""
-	/>
+	<Fav maxheight={50} {size} color={$primaryColor} />
 </a>
 
 <style>
@@ -26,10 +22,5 @@
 
 	a:focus-visible {
 		outline-offset: -4px;
-	}
-
-	img {
-		height: 48px;
-		margin: auto;
 	}
 </style>

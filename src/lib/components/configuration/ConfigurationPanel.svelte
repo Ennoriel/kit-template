@@ -1,13 +1,9 @@
 <script lang="ts">
-	import ColorPicker, { CircleVariant, type Hsv } from 'svelte-awesome-color-picker';
+	import ColorPicker, { type HsvaColor, A11yHorizontalWrapper } from 'svelte-awesome-color-picker';
 	import { Button, Panel, ResponsiveWrapper } from 'chyme-svelte';
 	import { isOpen, bgColor, linkColor, primaryColor, textColor } from './store';
 	import Brush from '../svg/icon/Brush.svelte';
-
-	let hsvBgColor: Hsv | undefined;
-	let hsvTextColor: Hsv | undefined;
-
-	$: LightnessDiff = Math.abs((hsvBgColor?.v || 0) - (hsvTextColor?.v || 0));
+	import { browser } from '$app/environment';
 
 	function reset() {
 		$bgColor = '#f7f7fa';
@@ -15,6 +11,15 @@
 		$primaryColor = '#002395';
 		$textColor = '#333333';
 	}
+
+	$: if (browser) {
+		fetch('/dev/configuration', {
+			method: 'POST',
+			body: JSON.stringify({ 'primaryColor': $primaryColor })
+		})
+	}
+
+	let t: any;
 </script>
 
 <span>
@@ -40,31 +45,26 @@
 <Panel bind:open={$isOpen}>
 	<ColorPicker
 		bind:hex={$primaryColor}
-		components={CircleVariant}
+		bind:color={t}
+		components={{wrapper: A11yHorizontalWrapper}}
 		isAlpha={false}
 		label="primary color"
 	/>
 	<ColorPicker
 		bind:hex={$bgColor}
-		bind:hsv={hsvBgColor}
-		components={CircleVariant}
 		isAlpha={false}
 		label="background color"
 	/>
 	<ColorPicker
 		bind:hex={$textColor}
-		bind:hsv={hsvTextColor}
-		components={CircleVariant}
 		isAlpha={false}
 		label="text color"
 	/>
 	<ColorPicker
 		bind:hex={$linkColor}
-		components={CircleVariant}
 		isAlpha={false}
 		label="link color"
 	/>
-
 	<div>
 		<p>
 			You've screwed the colors?<br />
@@ -72,15 +72,6 @@
 		</p>
 
 		<Button on:click={reset}>Reset the colors!</Button>
-
-		{#if LightnessDiff < 0.6}
-			<p>
-				⛔ Be careful, the color contrast between the <strong>text</strong> color and
-				<strong>background</strong>
-				color is not sufficient enough ({(100 * LightnessDiff).toFixed(1)}%). It should be higher
-				than 60%.
-			</p>
-		{/if}
 	</div>
 </Panel>
 
@@ -91,7 +82,24 @@
 		left: 16px;
 	}
 
+	span + :global(div) {
+		overflow: visible;
+	}
+
 	div {
 		padding: 0 16px 16px;
+	}
+
+	:global(.color-picker label) {
+		flex-direction: row;
+		margin: 16px;
+	}
+
+	:global(.color-picker .wrapper) {
+		top: 10px;
+	}
+
+	:global(.color-picker details) {
+		border: none;
 	}
 </style>

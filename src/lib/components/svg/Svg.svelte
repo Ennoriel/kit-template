@@ -8,15 +8,13 @@
 	let height: number | string;
 
 	$: {
-		if (!maxheight && !maxwidth) {
-			throw 'maxwidth or maxheight required';
-		} else if (maxheight && !maxwidth) {
+		if (maxheight && !maxwidth) {
 			width = ((format[0] * maxheight) / format[1]).toFixed(2);
 			height = maxheight;
 		} else if (maxwidth && !maxheight) {
 			width = maxwidth;
 			height = ((format[1] * maxwidth) / format[0]).toFixed(2);
-		} else {
+		} else if(maxheight && maxwidth) {
 			const w = maxwidth ? format[0] / maxwidth : Infinity;
 			const h = maxheight ? format[1] / maxheight : Infinity;
 			const ratio = Math.max(w, h);
@@ -27,6 +25,11 @@
 	}
 </script>
 
+<!-- {#if !maxheight && !maxwidth}
+	<p>
+		Please set maxheight or maxwidth
+	</p>
+{/if} -->
 <svg
 	xmlns="http://www.w3.org/2000/svg"
 	{width}

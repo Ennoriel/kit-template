@@ -34,7 +34,7 @@
 
 <Numbers
 	data={[
-		{ number: '100+', description: 'hours won with our expertise' },
+		{ number: '100+', description: 'hours won with the template' },
 		{ number: '10+', description: 'features you can rely on' },
 		{ number: '36', description: 'ready to use components' }
 	]}
@@ -43,7 +43,7 @@
 
 <Text
 	title="I care about performance"
-	description="...and also SEO, mobile interfaces, accessibility, soverignty.<br/>It's not just an option, it's built in! You'll have all of this without even noticing."
+	description="...and also SEO, mobile interfaces, accessibility, sovereignty.<br/>It's not just an option, it's built in! You'll have all of this without even noticing."
 	buttons={[{ label: "See what's included" }]}
 	img={WebDevices}
 	theme="transparent"
