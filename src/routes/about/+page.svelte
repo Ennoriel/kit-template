@@ -10,6 +10,7 @@
 	import VisionaryTechnology from '$lib/components/svg/VisionaryTechnology.svelte';
 	import Freelancer from '$lib/components/svg/Freelancer.svelte';
 	import WebDevices from '$lib/components/svg/WebDevices.svelte';
+	import Contact from '$lib/components/landing-page/Contact.svelte';
 </script>
 
 <Text
@@ -101,3 +102,5 @@
 	img={Freelancer}
 	theme="transparent"
 />
+
+<Contact/>

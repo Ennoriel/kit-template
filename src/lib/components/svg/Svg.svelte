@@ -45,5 +45,7 @@
 <style>
 	svg {
 		color: var(--color);
+		display: block;
+		margin: auto;
 	}
 </style>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ColorPicker, { type HsvaColor, A11yHorizontalWrapper } from 'svelte-awesome-color-picker';
+	import ColorPicker from 'svelte-awesome-color-picker';
 	import { Button, Panel, ResponsiveWrapper } from 'chyme-svelte';
 	import { isOpen, bgColor, linkColor, primaryColor, textColor } from './store';
 	import Brush from '../svg/icon/Brush.svelte';
@@ -18,8 +18,6 @@
 			body: JSON.stringify({ 'primaryColor': $primaryColor })
 		})
 	}
-
-	let t: any;
 </script>
 
 <span>
@@ -45,8 +43,6 @@
 <Panel bind:open={$isOpen}>
 	<ColorPicker
 		bind:hex={$primaryColor}
-		bind:color={t}
-		components={{wrapper: A11yHorizontalWrapper}}
 		isAlpha={false}
 		label="primary color"
 	/>

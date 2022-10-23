@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Button, ButtonGroup } from 'chyme-svelte';
+	import Wrapper from './Wrapper.svelte';
 
 	export let title: string;
 	export let description: string | undefined = undefined;
@@ -9,7 +10,7 @@
 	export let reverse = false;
 </script>
 
-<div class="wrapper {theme}" class:col-2={img}>
+<Wrapper {theme} col={img ? 2 : undefined}>
 	{#if img}
 		<div class:right={reverse} class:left={!reverse}>
 			<svelte:component this={img} maxwidth={250} maxheight={250} />
@@ -30,27 +31,9 @@
 			</ButtonGroup>
 		{/if}
 	</div>
-</div>
+</Wrapper>
 
 <style>
-	.wrapper {
-		--box-shadow: 0 0 2px #ddd;
-		--bg-color: white;
-		--margin: 128px 16px;
-
-		padding: 16px;
-		margin: var(--margin);
-		border-radius: 16px;
-		background-color: var(--bg-color);
-		box-shadow: var(--box-shadow);
-	}
-
-	.transparent {
-		--bg-color: transparent;
-		--box-shadow: none;
-		--margin: 64px 16px;
-	}
-
 	.left {
 		grid-column: left;
 	}
@@ -71,20 +54,7 @@
 		text-align: center;
 	}
 
-	.wrapper :global(br) {
+	p :global(br) {
 		margin: 16px;
-	}
-
-	@media (min-width: 768px) {
-		.wrapper {
-			padding: 32px;
-			display: grid;
-			justify-items: center;
-		}
-		.wrapper.col-2 {
-			grid-template-columns: 1fr 1fr;
-			grid-auto-flow: dense;
-			grid-template-areas: 'left right';
-		}
 	}
 </style>
