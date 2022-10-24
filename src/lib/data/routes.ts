@@ -22,6 +22,11 @@ export const ROUTES: Array<Route | Spacer> = [
 		spacer: true
 	},
 	{
+		route: '/blog',
+		label: 'Blog',
+		prefetch: true
+	},
+	{
 		route: '/user/settings',
 		label: 'Settings',
 		guard: loggedGuard,
