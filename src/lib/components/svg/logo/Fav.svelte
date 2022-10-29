@@ -1,16 +1,12 @@
 <script lang="ts">
-	import { getFaviconColors } from '$lib/components/configuration/favicon';
 	import Svg from '../Svg.svelte';
 
 	export let alt = 'Application logo';
 	export let maxwidth: number | undefined = undefined;
 	export let maxheight: number | undefined = undefined;
-	export let color: string | undefined = undefined;
 
 	export let size: 's' | 'm' = 'm';
 	export let bg = false;
-
-	$: svg = getFaviconColors(color, bg, size);
 </script>
 
 <Svg format={size === 's' ? [150, 150] : [450, 150]} {alt} {maxwidth} {maxheight}>

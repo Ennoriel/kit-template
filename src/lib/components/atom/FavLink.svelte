@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { primaryColor } from '$lib/components/configuration/store';
 	import Fav from '../svg/logo/Fav.svelte';
 
 	export let size: 's' | 'm' = 'm';
 </script>
 
 <a href="/" on:click class="favicon">
-	<Fav maxheight={50} {size} color={$primaryColor} />
+	<Fav maxheight={50} {size} />
 </a>
 
 <style>
