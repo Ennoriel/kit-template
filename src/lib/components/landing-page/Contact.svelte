@@ -1,5 +1,5 @@
 <script>
-	import { Button, Radio, TextArea, TextInput } from 'chyme-svelte';
+	import { Button, ButtonGroup, Radio, TextArea, TextInput } from 'chyme-svelte';
 	import Agreement from '../svg/Agreement.svelte';
 	import Wrapper from './Wrapper.svelte';
 </script>
@@ -29,7 +29,9 @@
 
 		<TextArea label="Details" name="details" variant="square" />
 
-		<Button>Send</Button>
+		<ButtonGroup justify="center">
+			<Button>Send</Button>
+		</ButtonGroup>
 	</div>
 </Wrapper>
 

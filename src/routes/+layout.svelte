@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { primaryColor } from '$lib/components/configuration/store';
-
+	import { Seo } from 'chyme-svelte';
 	import ConfigurationPanel from '$lib/components/configuration/ConfigurationPanel.svelte';
 	import Menu from '$lib/components/layout/Menu.svelte';
 	import type { UserF } from '$lib/types/user.type';
@@ -26,6 +26,11 @@
 		document.getElementsByTagName('head')[0].appendChild(link);
 	}
 </script>
+
+<Seo
+	title="Kit Template"
+	description="Don't want to pay for a login workflow for your MVP or your business class app/website? Good news! I don't like to rebuild it for every client."
+/>
 
 <Menu session={data.user} />
 

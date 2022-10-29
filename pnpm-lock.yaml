@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.40.1
   bcryptjs: ^2.4.3
   chyme: ^1.3.5
-  chyme-svelte: ^1.1.3
+  chyme-svelte: ^1.2.0
   cookie: ^0.5.0
   eslint: ^8.25.0
   eslint-config-prettier: ^8.5.0
@@ -53,7 +53,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.40.1_ukgdydjtebaxmxfqp5v5ulh64y
   '@typescript-eslint/parser': 5.40.1_z4bbprzjrhnsfa24uvmcbu7f5q
   chyme: 1.3.5
-  chyme-svelte: 1.1.3
+  chyme-svelte: 1.2.0
   eslint: 8.25.0
   eslint-config-prettier: 8.5.0_eslint@8.25.0
   eslint-plugin-svelte3: 4.0.0_2h6d4ngklmojchucosx7yvuw7m
@@ -1690,8 +1690,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /chyme-svelte/1.1.3:
-    resolution: {integrity: sha512-5ZG45tPBzHX3RChI7lB3aSwQCIqwJyOLC897wHsiwpF16sn3bDR4uCjMf2N4w7jLiIF/73iI2BETcjiM2OrGew==}
+  /chyme-svelte/1.2.0:
+    resolution: {integrity: sha512-a8QACNouD708mXx/afVlU1WNxGJBJDZEv0rK3oOIPYFXcjhft4KVdQd9uoHYPDINhjfQ4/8kmLVr6OjLq4ahkw==}
     dev: true
 
   /chyme/1.3.5:

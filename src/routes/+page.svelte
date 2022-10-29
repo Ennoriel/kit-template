@@ -1,7 +1,7 @@
 <script>
+	import { Button } from 'chyme-svelte';
 	import { isOpen } from '$lib/components/configuration/store';
 	import AdvancedCustomization from '$lib/components/svg/AdvancedCustomization.svelte';
-	import { Button } from 'chyme-svelte';
 </script>
 
 <div>
@@ -11,7 +11,7 @@
 		<h1>Start building what matters now</h1>
 		<p>
 			Don't want to pay for a login workflow for your <strong>MVP</strong> or your
-			<strong>business class app/website</strong> ?
+			<strong>business class app/website</strong>?
 		</p>
 		<p>
 			Good news! I don't like to rebuild it for every client. Instead, I made a template with the 10
