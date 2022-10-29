@@ -103,4 +103,4 @@
 	theme="transparent"
 />
 
-<Contact/>
+<Contact />

@@ -14,7 +14,7 @@
 		} else if (maxwidth && !maxheight) {
 			width = maxwidth;
 			height = ((format[1] * maxwidth) / format[0]).toFixed(2);
-		} else if(maxheight && maxwidth) {
+		} else if (maxheight && maxwidth) {
 			const w = maxwidth ? format[0] / maxwidth : Infinity;
 			const h = maxheight ? format[1] / maxheight : Infinity;
 			const ratio = Math.max(w, h);

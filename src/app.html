@@ -6,34 +6,34 @@
 		<meta name="viewport" content="width=device-width" />
 		<script>
 			// (() => {
-				function isDark(color) {
-					return false;
+			function isDark(color) {
+				return false;
+			}
+			var name = '--primary-color';
+			console.log('!!');
+			// const media = matchMedia('(prefers-color-scheme: dark)');
+			// let mediaDark = media.matches;
+			var value = localStorage.getItem(name);
+			var dark = isDark(value);
+
+			document.documentElement.style.setProperty(name, value);
+			document.documentElement.classList.remove('dark', 'light');
+			document.documentElement.classList.add(dark ? 'dark' : 'light');
+
+			update();
+
+			// update if the theme was toggled in another tab
+			window.addEventListener('storage', (ev) => {
+				if (ev.key === name) {
+					value = ev.newValue;
+					document.documentElement.style.setProperty(name, value);
+					update();
 				}
-				var name = '--primary-color';
-				console.log('!!')
-				// const media = matchMedia('(prefers-color-scheme: dark)');
-				// let mediaDark = media.matches;
-				var value = localStorage.getItem(name);
-				var dark = isDark(value);
-	
+			});
+
+			function update() {
 				document.documentElement.style.setProperty(name, value);
-				document.documentElement.classList.remove('dark', 'light');
-				document.documentElement.classList.add(dark ? 'dark' : 'light');
-
-				update();
-
-				// update if the theme was toggled in another tab
-				window.addEventListener('storage', (ev) => {
-					if (ev.key === name) {
-						value = ev.newValue;
-					document.documentElement.style.setProperty(name, value);
-						update();
-					}
-				});
-	
-				function update() {
-					document.documentElement.style.setProperty(name, value);
-				}
+			}
 			// })();
 		</script>
 		%sveltekit.head%

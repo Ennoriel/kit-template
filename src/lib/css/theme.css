@@ -4,3 +4,7 @@
 	--bg-color: #f7f7fa;
 	--header-height: 60px;
 }
+
+h1 {
+	margin-top: 0;
+}

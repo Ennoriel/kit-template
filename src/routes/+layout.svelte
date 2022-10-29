@@ -40,6 +40,7 @@
 		min-height: calc(100vh - var(--header-height));
 		max-width: 896px;
 		margin: auto;
+		padding: 32px 0;
 
 		--color: var(--primary-color);
 	}

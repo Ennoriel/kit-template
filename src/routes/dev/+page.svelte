@@ -2,7 +2,7 @@
 <a href="/dev/lucide">Lucide</a>
 
 <style>
-    a {
-        display: block;
-    }
+	a {
+		display: block;
+	}
 </style>

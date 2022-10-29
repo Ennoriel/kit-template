@@ -15,8 +15,8 @@
 	$: if (browser) {
 		fetch('/dev/configuration', {
 			method: 'POST',
-			body: JSON.stringify({ 'primaryColor': $primaryColor })
-		})
+			body: JSON.stringify({ primaryColor: $primaryColor })
+		});
 	}
 </script>
 
@@ -41,26 +41,10 @@
 </span>
 
 <Panel bind:open={$isOpen}>
-	<ColorPicker
-		bind:hex={$primaryColor}
-		isAlpha={false}
-		label="primary color"
-	/>
-	<ColorPicker
-		bind:hex={$bgColor}
-		isAlpha={false}
-		label="background color"
-	/>
-	<ColorPicker
-		bind:hex={$textColor}
-		isAlpha={false}
-		label="text color"
-	/>
-	<ColorPicker
-		bind:hex={$linkColor}
-		isAlpha={false}
-		label="link color"
-	/>
+	<ColorPicker bind:hex={$primaryColor} isAlpha={false} label="primary color" />
+	<ColorPicker bind:hex={$bgColor} isAlpha={false} label="background color" />
+	<ColorPicker bind:hex={$textColor} isAlpha={false} label="text color" />
+	<ColorPicker bind:hex={$linkColor} isAlpha={false} label="link color" />
 	<div>
 		<p>
 			You've screwed the colors?<br />

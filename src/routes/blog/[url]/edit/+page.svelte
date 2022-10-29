@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Button, TextArea, TextInput } from 'chyme-svelte';
-	import Markdown from '$lib/components/atom/Markdown.svelte';
+	import SvelteMarkdown from 'svelte-markdown';
 
 	let content: string;
 </script>
@@ -12,7 +12,7 @@
 		<TextArea label="Content" name="content" bind:value={content} />
 		<div>
 			<p>Preview</p>
-			<Markdown source={content} />
+			<SvelteMarkdown source={content} />
 		</div>
 	</div>
 	<Button type="submit">Create</Button>

@@ -3,7 +3,7 @@ import type { Article } from '$lib/types/article.type';
 import type { Filter, FindOptions, WithId } from 'mongodb';
 
 export async function createArticle(article: Article): Promise<Article> {
-    // TODO check uniqueness of url
+	// TODO check uniqueness of url
 	await db.collection('articles').insertOne(article);
 	return article;
 }
@@ -18,7 +18,9 @@ export async function getArticles<Field extends keyof Article = 'title' | 'url' 
 				{} as NonNullable<FindOptions['projection']>
 		  )
 		: { title: 1, url: 1, content: 1 };
-	return (await db.collection('articles').find<WithId<Article>>(query, { projection }).toArray()) || [];
+	return (
+		(await db.collection('articles').find<WithId<Article>>(query, { projection }).toArray()) || []
+	);
 }
 
 export async function getArticle<Field extends keyof Article = 'title' | 'url' | 'content'>(

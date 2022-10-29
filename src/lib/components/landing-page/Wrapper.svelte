@@ -1,16 +1,16 @@
 <script lang="ts">
-    export let theme: 'primary' | 'transparent' = 'primary';
-    export let col: number | undefined = undefined;
+	export let theme: 'primary' | 'transparent' = 'primary';
+	export let col: number | undefined = undefined;
 
-    $: classColumn = col && `column-${col}`
+	$: classColumn = col && `column-${col}`;
 </script>
 
 <div class="wrapper {theme} {classColumn}">
-    <slot/>
+	<slot />
 </div>
 
 <style>
-    .wrapper {
+	.wrapper {
 		--box-shadow: 0 0 2px #ddd;
 		--bg-color: white;
 		--margin: 128px 16px;
@@ -31,10 +31,10 @@
 	@media (min-width: 768px) {
 		.wrapper {
 			padding: 32px;
-            gap: 32px;
+			gap: 32px;
 			display: grid;
 			justify-items: stretch;
-            align-items: center;
+			align-items: center;
 		}
 		.wrapper.column-2 {
 			grid-template-columns: auto auto;

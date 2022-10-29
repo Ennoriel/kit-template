@@ -1,28 +1,28 @@
 <script lang="ts">
-    import Fake from '$lib/components/svg/Fake.svelte';
-    import Fav from '$lib/components/svg/logo/Fav.svelte';
+	import Fake from '$lib/components/svg/Fake.svelte';
+	import Fav from '$lib/components/svg/logo/Fav.svelte';
 	import { colorRange } from 'chyme';
 
-    const colors = colorRange('#111111', '#EEEEEE', 3) || [];
+	const colors = colorRange('#111111', '#EEEEEE', 3) || [];
 </script>
 
-<Fake/>
+<Fake />
 
 {#each colors as color, index}
-    <div class:dark={index} class:light={!index}>
-        <span style="--primary-color: {color} !important">
-            <Fav maxheight={50} size="s"/>
-        </span>
-        <span style="--primary-color: {color} !important">
-            <Fav maxheight={50} size="s" bg/>
-        </span>
-        <span style="--primary-color: {color} !important">
-            <Fav maxheight={50}/>
-        </span>
-        <span style="--primary-color: {color} !important">
-            <Fav maxheight={50} bg/>
-        </span>
-    </div>
+	<div class:dark={index} class:light={!index}>
+		<span style="--primary-color: {color} !important">
+			<Fav maxheight={50} size="s" />
+		</span>
+		<span style="--primary-color: {color} !important">
+			<Fav maxheight={50} size="s" bg />
+		</span>
+		<span style="--primary-color: {color} !important">
+			<Fav maxheight={50} />
+		</span>
+		<span style="--primary-color: {color} !important">
+			<Fav maxheight={50} bg />
+		</span>
+	</div>
 {/each}
 
 <!-- {#each colors as color}
@@ -39,10 +39,9 @@
         height: 50px;
     }
 </style> -->
-
 <style>
-    div {
-        max-width: 500px;
-        margin: auto;
-    }
+	div {
+		max-width: 500px;
+		margin: auto;
+	}
 </style>
