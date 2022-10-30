@@ -22,7 +22,7 @@
 			<p>{@html description}</p>
 		{/if}
 		{#if buttons && buttons.length}
-			<ButtonGroup>
+			<ButtonGroup justify="center">
 				{#each buttons as { label }, index}
 					<Button theme={index ? 'secondary' : 'primary'}>
 						{label}

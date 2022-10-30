@@ -1,9 +1,14 @@
 <script lang="ts">
-	import { Button, ButtonGroup, FormAction } from 'chyme-svelte';
+	import { Button, ButtonGroup, FormAction, Seo } from 'chyme-svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 </script>
+
+<Seo
+	title="SKit - blog articles"
+	description="The latest articles around best practices in web application development."
+/>
 
 {#if data.user}
 	<ButtonGroup>

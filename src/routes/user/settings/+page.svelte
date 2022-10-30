@@ -1,9 +1,14 @@
 <script lang="ts">
-	import { FileForm } from 'chyme-svelte';
+	import { FileForm, Seo } from 'chyme-svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 </script>
+
+<Seo
+	title="SKit - user config"
+	description="Configure your SKit account, configure your web app, see the power of a thoughtful-code approach"
+/>
 
 <h1>Settings</h1>
 

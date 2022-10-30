@@ -11,7 +11,13 @@
 	import Freelancer from '$lib/components/svg/Freelancer.svelte';
 	import WebDevices from '$lib/components/svg/WebDevices.svelte';
 	import Contact from '$lib/components/landing-page/Contact.svelte';
+	import { Seo } from 'chyme-svelte';
 </script>
+
+<Seo
+	title="SKit - about"
+	description="About SKit, learn what you can get with the power of a thoughtful-code approach"
+/>
 
 <Text
 	title="You are in the right place"

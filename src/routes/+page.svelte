@@ -1,8 +1,13 @@
 <script>
-	import { Button } from 'chyme-svelte';
+	import { Button, Seo } from 'chyme-svelte';
 	import { isOpen } from '$lib/components/configuration/store';
 	import AdvancedCustomization from '$lib/components/svg/AdvancedCustomization.svelte';
 </script>
+
+<Seo
+	title="SKit"
+	description="Don't want to pay for a login workflow for your MVP or your business class app/website? Good news! I don't like to rebuild it for every client."
+/>
 
 <div>
 	<AdvancedCustomization maxheight={300} alt="" />

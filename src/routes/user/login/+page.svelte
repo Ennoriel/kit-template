@@ -1,10 +1,14 @@
 <script lang="ts">
-	import { Button, EmailInput, PasswordInput } from 'chyme-svelte';
-
+	import { Button, EmailInput, PasswordInput, Seo } from 'chyme-svelte';
 	import type { ActionData } from './$types';
 
 	export let form: ActionData;
 </script>
+
+<Seo
+	title="SKit - login"
+	description="Login to SKit, configure your web app, see the power of a thoughtful-code approach"
+/>
 
 <form method="post">
 	<h1>Login</h1>

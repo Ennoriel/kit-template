@@ -5,6 +5,8 @@
 	let content: string;
 </script>
 
+<!-- TODO seo -->
+
 <form method="post">
 	<TextInput label="Title" name="title" />
 	<TextInput label="Url" name="url" />

@@ -1,10 +1,14 @@
 <script lang="ts">
-	import { Button, EmailInput } from 'chyme-svelte';
-
+	import { Button, EmailInput, Seo } from 'chyme-svelte';
 	import type { ActionData } from './$types';
 
 	export let form: ActionData;
 </script>
+
+<Seo
+	title="SKit - reset password"
+	description="Reset your SKit password, configure your web app, see the power of a thoughtful-code approach"
+/>
 
 <form method="post">
 	<h1>Lost your password?</h1>
