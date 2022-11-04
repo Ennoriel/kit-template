@@ -1,4 +1,9 @@
-import { S3, type PutObjectCommandInput, type S3ClientConfig } from '@aws-sdk/client-s3';
+import {
+	type DeleteObjectCommandInput,
+	S3,
+	type PutObjectCommandInput,
+	type S3ClientConfig
+} from '@aws-sdk/client-s3';
 import { validateToken } from '../db/csrf';
 import {
 	S3_BUCKET_API_KEY,
@@ -7,8 +12,18 @@ import {
 } from '$env/static/private';
 import { getByteArray, isImage } from 'chyme';
 
-export async function uploadS3(request: Request, filename: string) {
-	const data = await request.formData();
+function getConfig(): S3ClientConfig {
+	return {
+		endpoint: S3_BUCKET_API_ENDPOINT,
+		credentials: {
+			accessKeyId: S3_BUCKET_API_KEY,
+			secretAccessKey: S3_BUCKET_API_SECRET
+		},
+		region: 'fr-par'
+	};
+}
+
+export async function uploadS3(data: FormData, filename: string) {
 	const file = data.get('file') as File;
 	const csrf = data.get('csrf') as string;
 
@@ -34,16 +49,7 @@ export async function uploadS3(request: Request, filename: string) {
 		);
 	}
 
-	const config: S3ClientConfig = {
-		endpoint: S3_BUCKET_API_ENDPOINT,
-		credentials: {
-			accessKeyId: S3_BUCKET_API_KEY,
-			secretAccessKey: S3_BUCKET_API_SECRET
-		},
-		region: 'fr-par'
-	};
-
-	const client = new S3(config);
+	const client = new S3(getConfig());
 
 	const put: PutObjectCommandInput = {
 		Bucket: 'website-rennes-sports',
@@ -55,6 +61,25 @@ export async function uploadS3(request: Request, filename: string) {
 
 	return new Promise((resolve, reject) => {
 		client.putObject(put, (e) => {
+			if (e) {
+				reject(e);
+			} else {
+				resolve({ filename });
+			}
+		});
+	});
+}
+
+export async function deleteS3(filename: string) {
+	const client = new S3(getConfig());
+
+	const del: DeleteObjectCommandInput = {
+		Bucket: 'website-rennes-sports',
+		Key: filename
+	};
+
+	return new Promise((resolve, reject) => {
+		client.deleteObject(del, (e) => {
 			if (e) {
 				reject(e);
 			} else {

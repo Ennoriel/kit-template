@@ -6,7 +6,7 @@
 	const colors = colorRange('#111111', '#EEEEEE', 3) || [];
 </script>
 
-<Fake />
+<Fake alt="" />
 
 {#each colors as color, index}
 	<div class:dark={index} class:light={!index}>

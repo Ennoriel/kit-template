@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { primaryColor } from '$lib/components/configuration/store';
-	import { Seo } from 'chyme-svelte';
 	import ConfigurationPanel from '$lib/components/configuration/ConfigurationPanel.svelte';
 	import Menu from '$lib/components/layout/Menu.svelte';
 	import type { UserF } from '$lib/types/user.type';

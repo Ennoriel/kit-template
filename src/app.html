@@ -5,14 +5,11 @@
 		<link rel="icon" href="/svg/favicon-s.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<script>
-			// (() => {
 			function isDark(color) {
 				return false;
 			}
 			var name = '--primary-color';
-			console.log('!!');
-			// const media = matchMedia('(prefers-color-scheme: dark)');
-			// let mediaDark = media.matches;
+
 			var value = localStorage.getItem(name);
 			var dark = isDark(value);
 
@@ -34,7 +31,6 @@
 			function update() {
 				document.documentElement.style.setProperty(name, value);
 			}
-			// })();
 		</script>
 		%sveltekit.head%
 	</head>

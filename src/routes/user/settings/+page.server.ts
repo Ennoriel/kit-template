@@ -1,4 +1,3 @@
-import { invalidate } from '$app/navigation';
 import { generateToken } from '$lib/server/db/csrf';
 import { getUser, setUserImage } from '$lib/server/db/users';
 import { uploadS3 } from '$lib/server/s3/s3';
@@ -19,6 +18,7 @@ export const load: PageServerLoad = async ({ parent }) => {
 
 export const actions: Actions = {
 	uploadProfileImage: async ({ request }) => {
+		const data = await request.formData();
 		const user = await verifyUser(request);
 		if (!user) {
 			return invalid(400, { message: 'Vous devez être authentifié.' });
@@ -28,10 +28,9 @@ export const actions: Actions = {
 		if (!dbUser?._id) {
 			return invalid(400, { message: 'Vous devez être authentifié.' });
 		}
-		uploadS3(request, dbUser._id.toString())
+		uploadS3(data, dbUser._id.toString())
 			.then(() => {
 				setUserImage(new ObjectId(user._id));
-				invalidate((url) => url.pathname === '/user/settings');
 			})
 			.catch(() => {
 				return invalid(400, {

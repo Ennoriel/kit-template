@@ -1,8 +1,12 @@
-<script>
+<script lang="ts">
 	import Svg from './Svg.svelte';
+
+	export let alt: string;
+	export let maxwidth: number | undefined = undefined;
+	export let maxheight: number | undefined = undefined;
 </script>
 
-<Svg format={[500, 200]} maxwidth={200} alt="">
+<Svg format={[500, 200]} {alt} {maxwidth} {maxheight}>
 	<rect x="10" y="10" width="50" height="50" fill="black" />
 	<rect x="70" y="10" width="50" height="50" stroke="black" />
 	<rect x="130" y="10" width="50" height="50" />

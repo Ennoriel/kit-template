@@ -22,6 +22,12 @@ export const ROUTES: Array<Route | Spacer> = [
 		spacer: true
 	},
 	{
+		route: '/img',
+		label: 'Images',
+		guard: loggedGuard,
+		prefetch: true
+	},
+	{
 		route: '/blog',
 		label: 'Blog',
 		prefetch: true
