@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { locale } from '$i18n/i18n-svelte';
 	import { Button, ButtonGroup, FormAction, Seo } from 'chyme-svelte';
 	import type { PageData } from './$types';
 
@@ -12,7 +13,7 @@
 
 {#if data.user}
 	<ButtonGroup>
-		<Button as="a" href="/blog/create">New page</Button>
+		<Button as="a" href="/{$locale}/blog/create">New page</Button>
 	</ButtonGroup>
 {/if}
 

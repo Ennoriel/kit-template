@@ -1,3 +1,5 @@
+import type { Locales } from '$i18n/i18n-types';
+import { locales } from '$i18n/i18n-util';
 import type { UserF } from '$lib/types/user.type';
 
 export type Route = {
@@ -22,8 +24,13 @@ export const ROUTES: Array<Route | Spacer> = [
 		spacer: true
 	},
 	{
-		route: '/img',
-		label: 'Images',
+		route: '/about',
+		label: 'About',
+		prefetch: true
+	},
+	{
+		route: '/dev',
+		label: 'Dev',
 		guard: loggedGuard,
 		prefetch: true
 	},
@@ -87,15 +94,18 @@ export function getOnlyRoutes(routes: Array<Route | Spacer>): Array<Route> {
 }
 
 export function getActiveRoute(path: string, routes = ROUTES): Route | undefined {
+	const basePath = removeRouteLocale(path);
 	const onlyRoutes = getOnlyRoutes(routes).sort((r1, r2) => r2.route.length - r1.route.length);
 
-	const activeSubRoute = onlyRoutes.find((r) => r.subRoutes && getActiveRoute(path, r.subRoutes));
+	const activeSubRoute = onlyRoutes.find(
+		(r) => r.subRoutes && getActiveRoute(basePath, r.subRoutes)
+	);
 	if (activeSubRoute) return activeSubRoute;
 
-	const equalRoute = onlyRoutes.find((r) => r.route === path);
+	const equalRoute = onlyRoutes.find((r) => r.route === basePath);
 	if (equalRoute) return equalRoute;
 
-	return onlyRoutes.find((r) => path.startsWith(r.route));
+	return onlyRoutes.find((r) => basePath.startsWith(r.route));
 }
 
 export function getRouteLabel(route: Route | Spacer, session: UserF | undefined) {
@@ -105,4 +115,17 @@ export function getRouteLabel(route: Route | Spacer, session: UserF | undefined)
 			? onlyRoute.getLabel(session)
 			: onlyRoute.label;
 	}
+}
+
+export function getRouteUrl(locale: Locales, route: Route | Spacer) {
+	const onlyRoute = getOnlyRoutes([route])?.[0];
+	if (onlyRoute) {
+		return `/${locale}${onlyRoute.route}`;
+	}
+	return '';
+}
+
+export function removeRouteLocale(path: string) {
+	const locale = locales.filter((l) => path.startsWith('/' + l));
+	return locale.length ? path.slice(3) : path;
 }

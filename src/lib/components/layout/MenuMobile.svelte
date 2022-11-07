@@ -1,12 +1,20 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { isOpen } from '$lib/store';
-	import { display, getActiveRoute, getRouteLabel, guard, ROUTES } from '$lib/data/routes';
+	import {
+		display,
+		getActiveRoute,
+		getRouteLabel,
+		getRouteUrl,
+		guard,
+		ROUTES
+	} from '$lib/data/routes';
 	import { page } from '$app/stores';
 	import { XOrMenu } from 'chyme-svelte';
 	import Fav from '$lib/components/svg/logo/Fav.svelte';
 	import FavLink from '$lib/components/atom/FavLink.svelte';
 	import type { UserF } from '$lib/types/user.type';
+	import { locale } from '$i18n/i18n-svelte';
 
 	export let session: UserF | undefined = undefined;
 
@@ -37,7 +45,7 @@
 				{#if 'spacer' in route}
 					<hr />
 				{:else if route.action}
-					<form method="post" action={route.route}>
+					<form method="post" action={getRouteUrl($locale, route)}>
 						<button type="submit">
 							{getRouteLabel(route, session)}
 						</button>
@@ -47,7 +55,7 @@
 					<a
 						data-sveltekit-prefetch={route.prefetch ? '' : 'off'}
 						on:click={() => ($isOpen = false)}
-						href={route.route}
+						href={getRouteUrl($locale, route)}
 						class:active
 						aria-current={(active && 'page') || undefined}
 					>

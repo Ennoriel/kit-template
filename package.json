@@ -3,14 +3,16 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev --open --host",
+		"dev": "npm-run-all --parallel sveltekit typesafe-i18n",
+		"sveltekit": "vite dev --open --host",
 		"build": "vite build",
 		"preview": "vite preview --open --host",
 		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "eslint .",
-		"prettier": "prettier --write ./**/* --no-error-on-unmatched-pattern --ignore-unknown"
+		"prettier": "prettier --write ./**/* --no-error-on-unmatched-pattern --ignore-unknown",
+		"typesafe-i18n": "typesafe-i18n"
 	},
 	"devDependencies": {
 		"@aws-sdk/client-s3": "^3.204.0",
@@ -25,12 +27,13 @@
 		"@typescript-eslint/eslint-plugin": "^5.42.0",
 		"@typescript-eslint/parser": "^5.42.0",
 		"chyme": "^1.3.5",
-		"chyme-svelte": "^1.2.1",
+		"chyme-svelte": "^1.2.2",
 		"eslint": "^8.26.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"mongodb": "^4.11.0",
 		"node-mailjet": "^5.1.1",
+		"npm-run-all": "^4.1.5",
 		"prettier": "^2.7.1",
 		"prettier-plugin-svelte": "^2.8.0",
 		"prism-svelte": "^0.5.0",
@@ -48,6 +51,7 @@
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
 		"cookie": "^0.5.0",
-		"jsonwebtoken": "^8.5.1"
+		"jsonwebtoken": "^8.5.1",
+		"typesafe-i18n": "^5.16.2"
 	}
 }

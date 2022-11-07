@@ -1,36 +1,45 @@
 <script>
-	import { Button, ButtonGroup, Radio, TextArea, TextInput } from 'chyme-svelte';
+	import { Button, ButtonGroup, EmailInput, Radio, TextArea, TextInput } from 'chyme-svelte';
 	import Agreement from '../svg/Agreement.svelte';
 	import Wrapper from './Wrapper.svelte';
+	import LL from '$i18n/i18n-svelte';
 </script>
 
 <Wrapper col={2}>
 	<Agreement alt="" maxwidth={300} />
 	<div>
-		<h2>Let's collaborate!</h2>
+		<h2>{$LL.compo_contact_title()}</h2>
 
 		<Radio
-			label="Services"
+			label={$LL.compo_contact_services_label()}
 			name="services"
-			options={['Assesment', 'Start-up app', 'Business app']}
+			options={[
+				$LL.compo_contact_services_option_assessment(),
+				$LL.compo_contact_services_option_startup_app(),
+				$LL.compo_contact_services_option_business_app()
+			]}
 		/>
 
 		<Radio
-			label="Budget in euro"
+			label={$LL.compo_contact_budget_label()}
 			name="budget"
-			options={['5k - 10k', '10k - 25k', 'More than 25k']}
+			options={[
+				$LL.compo_contact_budget_option_low(),
+				$LL.compo_contact_budget_option_medium(),
+				$LL.compo_contact_budget_option_high()
+			]}
 		/>
 
 		<div class="cols-2">
-			<TextInput label="Name" name="name" variant="square" />
+			<TextInput label={$LL.compo_contact_budget_name()} name="name" variant="square" />
 
-			<TextInput label="Email" name="email" variant="square" />
+			<EmailInput label={$LL.compo_contact_budget_email()} name="email" variant="square" />
 		</div>
 
-		<TextArea label="Details" name="details" variant="square" />
+		<TextArea label={$LL.compo_contact_budget_details()} name="details" variant="square" />
 
 		<ButtonGroup justify="center">
-			<Button>Send</Button>
+			<Button>{$LL.global_action_send()}</Button>
 		</ButtonGroup>
 	</div>
 </Wrapper>

@@ -4,6 +4,7 @@
 	import { isOpen, bgColor, linkColor, primaryColor, textColor } from './store';
 	import Brush from '../svg/icon/Brush.svelte';
 	import { browser } from '$app/environment';
+	import LL from '$i18n/i18n-svelte';
 
 	function reset() {
 		$bgColor = '#f7f7fa';
@@ -41,17 +42,16 @@
 </span>
 
 <Panel bind:open={$isOpen}>
-	<ColorPicker bind:hex={$primaryColor} isAlpha={false} label="primary color" />
-	<ColorPicker bind:hex={$bgColor} isAlpha={false} label="background color" />
-	<ColorPicker bind:hex={$textColor} isAlpha={false} label="text color" />
-	<ColorPicker bind:hex={$linkColor} isAlpha={false} label="link color" />
+	<ColorPicker bind:hex={$primaryColor} isAlpha={false} label={$LL.global_color_primary_label()} />
+	<ColorPicker bind:hex={$bgColor} isAlpha={false} label={$LL.global_color_background_label()} />
+	<ColorPicker bind:hex={$textColor} isAlpha={false} label={$LL.global_color_text_label()} />
+	<ColorPicker bind:hex={$linkColor} isAlpha={false} label={$LL.global_color_link_label()} />
 	<div>
 		<p>
-			You've screwed the colors?<br />
-			I'v done it too, many times!
+			{@html $LL.compo_configuration_panel_screwed_colors()}
 		</p>
 
-		<Button on:click={reset}>Reset the colors!</Button>
+		<Button on:click={reset}>{$LL.compo_configuration_panel_action_reset()}</Button>
 	</div>
 </Panel>
 

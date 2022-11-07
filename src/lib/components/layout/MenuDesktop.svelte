@@ -1,9 +1,17 @@
 <script lang="ts">
-	import { display, getActiveRoute, getRouteLabel, guard, ROUTES } from '$lib/data/routes';
+	import {
+		display,
+		getActiveRoute,
+		getRouteLabel,
+		getRouteUrl,
+		guard,
+		ROUTES
+	} from '$lib/data/routes';
 	import { FormAction } from 'chyme-svelte';
 	import { page } from '$app/stores';
 	import FavLink from '$lib/components/atom/FavLink.svelte';
 	import type { UserF } from '$lib/types/user.type';
+	import { locale } from '$i18n/i18n-svelte';
 
 	export let session: UserF | undefined = undefined;
 
@@ -18,14 +26,14 @@
 			{#if 'spacer' in route}
 				<span style:flex-grow="1" />
 			{:else if route.action}
-				<FormAction action={route.route}>
+				<FormAction action={getRouteUrl($locale, route)}>
 					{getRouteLabel(route, session)}
 				</FormAction>
 			{:else}
 				{@const active = activeRoute?.route === route.route}
 				<a
 					data-sveltekit-prefetch={route.prefetch ? '' : 'off'}
-					href={route.route}
+					href={getRouteUrl($locale, route)}
 					class={route.class}
 					class:active
 					aria-current={(active && 'page') || undefined}
