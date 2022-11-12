@@ -55,6 +55,6 @@
 	}
 
 	p :global(br) {
-		margin: 16px;
+		margin-bottom: 16px;
 	}
 </style>

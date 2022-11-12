@@ -15,7 +15,7 @@
 
 	export let session: UserF | undefined = undefined;
 
-	$: displayedRoutes = display(guard(ROUTES, session), { mobile: false });
+	$: displayedRoutes = display(guard($ROUTES, session), { mobile: false });
 	$: activeRoute = getActiveRoute($page.url.pathname + $page.url.search, displayedRoutes);
 </script>
 

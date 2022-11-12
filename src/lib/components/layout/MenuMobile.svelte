@@ -24,7 +24,7 @@
 		if ($isOpen && !burgerMenu.contains(target as Node)) $isOpen = false;
 	}
 
-	$: displayedRoutes = display(guard(ROUTES, session), { mobile: true });
+	$: displayedRoutes = display(guard($ROUTES, session), { mobile: true });
 	$: activeRoute = getActiveRoute($page.url.pathname + $page.url.search, displayedRoutes);
 </script>
 

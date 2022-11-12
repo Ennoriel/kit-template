@@ -1,6 +1,8 @@
 import type { Locales } from '$i18n/i18n-types';
 import { locales } from '$i18n/i18n-util';
 import type { UserF } from '$lib/types/user.type';
+import LL from '$i18n/i18n-svelte';
+import { derived, type Readable, type Writable } from 'svelte/store';
 
 export type Route = {
 	route: string;
@@ -19,53 +21,53 @@ export type Spacer = {
 	display?: (config?: { mobile: boolean }) => boolean;
 };
 
-export const ROUTES: Array<Route | Spacer> = [
+export const ROUTES: Readable<Array<Route | Spacer>> = derived(LL, ($LL) => ([
 	{
 		spacer: true
-	},
+	} as Spacer,
 	{
 		route: '/about',
-		label: 'About',
+		label: $LL.menu_label_about(),
 		prefetch: true
-	},
+	} as Route,
 	{
 		route: '/dev',
 		label: 'Dev',
 		guard: loggedGuard,
 		prefetch: true
-	},
+	} as Route,
 	{
 		route: '/blog',
-		label: 'Blog',
+		label: $LL.menu_label_blog(),
 		prefetch: true
-	},
+	} as Route,
 	{
 		route: '/user/settings',
-		label: 'Settings',
+		label: $LL.menu_label_settings(),
 		guard: loggedGuard,
 		prefetch: true
-	},
+	} as Route,
 	{
 		route: '/user/logout',
-		label: 'Logout',
+		label: $LL.menu_label_logout(),
 		guard: loggedGuard,
 		action: true
-	},
+	} as Route,
 	{
 		route: '/user/sign-in',
-		label: 'Sign in',
+		label: $LL.menu_label_sign_in(),
 		guard: notLoggedGuard
-	},
+	} as Route,
 	{
 		route: '/user/login',
-		label: 'Login',
+		label: $LL.menu_label_login(),
 		guard: notLoggedGuard
-	},
+	} as Route,
 	{
 		spacer: true,
-		display: (config) => !!config?.mobile
-	}
-];
+		display: (config?: { mobile: boolean }) => !!config?.mobile
+	} as Spacer
+]));
 
 export function loggedGuard(session: UserF | undefined) {
 	return !!session;
@@ -93,7 +95,7 @@ export function getOnlyRoutes(routes: Array<Route | Spacer>): Array<Route> {
 	return routes.filter((r) => 'route' in r) as Array<Route>;
 }
 
-export function getActiveRoute(path: string, routes = ROUTES): Route | undefined {
+export function getActiveRoute(path: string, routes: Array<Route | Spacer>): Route | undefined {
 	const basePath = removeRouteLocale(path);
 	const onlyRoutes = getOnlyRoutes(routes).sort((r1, r2) => r2.route.length - r1.route.length);
 

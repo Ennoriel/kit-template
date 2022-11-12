@@ -1,4 +1,5 @@
 <script lang="ts">
+	import LL from '$i18n/i18n-svelte';
 	import { Button, PasswordInput } from 'chyme-svelte';
 
 	import type { ActionData } from './$types';
@@ -7,16 +8,16 @@
 </script>
 
 <form method="post">
-	<h1>Reset your password</h1>
+	<h1>{$LL.password_reset_title_password()}</h1>
 
-	<PasswordInput label="New password" />
+	<PasswordInput label="{$LL.password_reset_label_new_password()}" />
 
 	{#if form?.error}
 		<p style:background="orange">{form.error}</p>
 	{/if}
 
 	<div>
-		<Button type="submit">reinitialize password</Button>
+		<Button type="submit">{$LL.password_reset_action_new_password()}</Button>
 	</div>
 </form>
 

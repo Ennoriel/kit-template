@@ -5,6 +5,7 @@ import { sendMailConfirmAccount } from '$lib/utils/mail';
 import { crypt } from '../user.utils';
 import { invalid, redirect } from '@sveltejs/kit';
 import { PUBLIC_BASE_URL } from '$env/static/public';
+import { getLL, getLocale } from '$i18n/i18n-store';
 
 type User = {
 	email: string;
@@ -13,19 +14,21 @@ type User = {
 
 export const actions: Actions = {
 	default: async ({ request, url }) => {
+		const $LL = getLL(url);
+
 		const body = await request.formData();
 		const user = formDataToObject<User>(body);
 
 		const { email, password } = user;
 
 		if (!email || !password) {
-			return invalid(400, { error: 'The email and password should be provided' });
+			return invalid(400, { error: $LL.sign_in_error_missing_data() });
 		}
 
 		const dbUser = await getUser({ email });
 
 		if (dbUser)
-			return invalid(400, { error: `An account with the email ${email} already exists!` });
+			return invalid(400, { error: $LL.sign_in_error_missing_data({email}) });
 
 		const newUser = await createUser({
 			email,
@@ -36,7 +39,7 @@ export const actions: Actions = {
 		if (newUser.validationCode) {
 			sendMailConfirmAccount(email, {
 				name: email,
-				validation_link: `${PUBLIC_BASE_URL}/user/validate/${newUser.validationCode}`
+				validation_link: `${PUBLIC_BASE_URL}/${getLocale(url)}/user/validate/${newUser.validationCode}`
 			});
 		}
 

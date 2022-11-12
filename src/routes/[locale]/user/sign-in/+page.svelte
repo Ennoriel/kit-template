@@ -1,27 +1,28 @@
 <script lang="ts">
 	import { Button, EmailInput, PasswordInput, Seo } from 'chyme-svelte';
 	import type { ActionData } from './$types';
+	import LL from '$i18n/i18n-svelte';
+	import { locales } from '$i18n/i18n-util';
 
 	export let form: ActionData;
 </script>
 
-<Seo
-	title="SKit - sign in"
-	description="Sign in to SKit, configure your web app, see the power of a thoughtful-code approach"
-/>
+<Seo title={$LL.sign_in_seo_title()} description={$LL.sign_in_seo_description()} {locales} />
 
 <form method="post">
-	<h1>Signin</h1>
+	<h1>
+		{$LL.sign_in_title()}
+	</h1>
 
-	<EmailInput />
-	<PasswordInput />
+	<EmailInput label={$LL.global_label_email()}/>
+	<PasswordInput label={$LL.global_label_password()} />
 
 	{#if form?.error}
 		<p style:background="orange">{form.error}</p>
 	{/if}
 
 	<div>
-		<Button type="submit">login</Button>
+		<Button type="submit">{$LL.sign_in_action_submit()}</Button>
 	</div>
 </form>
 

@@ -4,6 +4,7 @@
 	import { isOpen, bgColor, linkColor, primaryColor, textColor } from './store';
 	import Brush from '../svg/icon/Brush.svelte';
 	import { browser } from '$app/environment';
+	import { locale } from '$i18n/i18n-svelte';
 	import LL from '$i18n/i18n-svelte';
 
 	function reset() {
@@ -14,7 +15,7 @@
 	}
 
 	$: if (browser) {
-		fetch('/dev/configuration', {
+		fetch(`/${$locale}/dev/configuration`, {
 			method: 'POST',
 			body: JSON.stringify({ primaryColor: $primaryColor })
 		});
@@ -36,7 +37,7 @@
 			on:click={(e) => {
 				e.stopPropagation();
 				$isOpen = !$isOpen;
-			}}>Configure the theme</Button
+			}}>{$LL.layout_button_configure_theme()}</Button
 		>
 	</ResponsiveWrapper>
 </span>

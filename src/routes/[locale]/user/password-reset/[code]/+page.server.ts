@@ -1,37 +1,42 @@
+import { getLL } from '$i18n/i18n-store';
 import { getUser, resetPassword } from '$lib/server/db/users';
 import { error, invalid, redirect } from '@sveltejs/kit';
 import { formDataToObject } from 'chyme';
 import { crypt } from '../../user.utils';
 import type { Actions, PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ url, params }) => {
+	const $LL = getLL(url);
+
 	const dbUser = await getUser({ 'passwordReset.code': params.code }, ['passwordReset']);
 	if (!dbUser) {
-		throw error(404, 'Your password reset request has been lost. Please try again or contact us.');
+		throw error(404, $LL.password_reset_error_wrong_code());
 	}
 
 	if (!dbUser.passwordReset?.date /* TODO check date not to old */) {
-		throw error(404, 'Your password reset request is too old. Please issue a new request.');
+		throw error(404, $LL.password_reset_error_too_old());
 	}
 
 	return {
-		message: 'All good, you may reset your password',
+		message: $LL.password_reset_success(),
 		passwordResetCode: params.code
 	};
 };
 
 export const actions: Actions = {
 	default: async ({ params, request, url }) => {
+		const $LL = getLL(url);
+
 		const dbUser = await getUser({ 'passwordReset.code': params.code }, ['passwordReset']);
 		if (!dbUser) {
 			return invalid(404, {
-				error: 'Your password reset request has been lost. Please try again or contact us.'
+				error: $LL.password_reset_error_wrong_code()
 			});
 		}
 
 		if (!dbUser.passwordReset?.date /* TODO check date not to old */) {
 			return invalid(404, {
-				error: 'Your password reset request is too old. Please issue a new request.'
+				error: $LL.password_reset_error_too_old()
 			});
 		}
 

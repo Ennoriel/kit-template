@@ -4,9 +4,10 @@
 	import AdvancedCustomization from '$lib/components/svg/AdvancedCustomization.svelte';
 	import LL from '$i18n/i18n-svelte';
 	import { locales } from '$i18n/i18n-util';
+	import { locale } from '$i18n/i18n-svelte';
 </script>
 
-<Seo title={$LL.home_seo_title()} description={$LL.home_seo_description()} {locales} />
+<Seo title={$LL.global_seo_title()} description={$LL.global_seo_description()} {locales} />
 
 <div>
 	<AdvancedCustomization maxheight={300} alt="" />
@@ -23,7 +24,7 @@
 			<li>{@html $LL.home_feature_4()}</li>
 			<li>{@html $LL.home_feature_5()}</li>
 		</ul>
-		<Button as="a" href="/about">{$LL.global_action_learn_more()}</Button>
+		<Button as="a" href="/{$locale}/about">{$LL.global_action_learn_more()}</Button>
 		<Button
 			on:click={(e) => {
 				e.stopPropagation();

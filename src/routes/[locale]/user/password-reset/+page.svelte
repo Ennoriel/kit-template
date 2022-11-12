@@ -1,26 +1,25 @@
 <script lang="ts">
 	import { Button, EmailInput, Seo } from 'chyme-svelte';
 	import type { ActionData } from './$types';
+	import LL from '$i18n/i18n-svelte';
+	import { locales } from '$i18n/i18n-util';
 
 	export let form: ActionData;
 </script>
 
-<Seo
-	title="SKit - reset password"
-	description="Reset your SKit password, configure your web app, see the power of a thoughtful-code approach"
-/>
+<Seo title={$LL.password_reset_seo_title()} description={$LL.password_reset_seo_description()} {locales} />
 
 <form method="post">
-	<h1>Lost your password?</h1>
+	<h1>{$LL.password_reset_title()}</h1>
 
-	<EmailInput />
+	<EmailInput label={$LL.global_label_email()}/>
 
 	{#if form?.error}
 		<p style:background="orange">{form.error}</p>
 	{/if}
 
 	<div>
-		<Button type="submit">send me a reset link</Button>
+		<Button type="submit">{$LL.password_action_submit()}</Button>
 	</div>
 </form>
 

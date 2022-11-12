@@ -1,20 +1,19 @@
 <script lang="ts">
 	import { FileForm, Seo } from 'chyme-svelte';
 	import type { PageData } from './$types';
+	import LL from '$i18n/i18n-svelte';
+	import { locales } from '$i18n/i18n-util';
 
 	export let data: PageData;
 </script>
 
-<Seo
-	title="SKit - user config"
-	description="Configure your SKit account, configure your web app, see the power of a thoughtful-code approach"
-/>
+<Seo title={$LL.settings_seo_title()} description={$LL.settings_seo_description()} {locales} />
 
 <h1>Settings</h1>
 
 <h2>Profile</h2>
 
-<h3>Image de profile</h3>
+<h3>Profile image</h3>
 
 <div class="img-container">
 	<img
