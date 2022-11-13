@@ -13,7 +13,7 @@ type User = {
 
 export const actions: Actions = {
 	default: async ({ cookies, request, url }) => {
-		const $LL = getLL(url)
+		const $LL = getLL(url);
 
 		const body = await request.formData();
 		const user = formDataToObject<User>(body);

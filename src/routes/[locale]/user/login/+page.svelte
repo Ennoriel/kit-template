@@ -14,7 +14,7 @@
 		{$LL.login_title()}
 	</h1>
 
-	<EmailInput label={$LL.global_label_email()}/>
+	<EmailInput label={$LL.global_label_email()} />
 	<PasswordInput label={$LL.global_label_password()} />
 
 	{#if form?.error}

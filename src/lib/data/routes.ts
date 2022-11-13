@@ -2,7 +2,7 @@ import type { Locales } from '$i18n/i18n-types';
 import { locales } from '$i18n/i18n-util';
 import type { UserF } from '$lib/types/user.type';
 import LL from '$i18n/i18n-svelte';
-import { derived, type Readable, type Writable } from 'svelte/store';
+import { derived, type Readable } from 'svelte/store';
 
 export type Route = {
 	route: string;
@@ -21,7 +21,7 @@ export type Spacer = {
 	display?: (config?: { mobile: boolean }) => boolean;
 };
 
-export const ROUTES: Readable<Array<Route | Spacer>> = derived(LL, ($LL) => ([
+export const ROUTES: Readable<Array<Route | Spacer>> = derived(LL, ($LL) => [
 	{
 		spacer: true
 	} as Spacer,
@@ -67,7 +67,7 @@ export const ROUTES: Readable<Array<Route | Spacer>> = derived(LL, ($LL) => ([
 		spacer: true,
 		display: (config?: { mobile: boolean }) => !!config?.mobile
 	} as Spacer
-]));
+]);
 
 export function loggedGuard(session: UserF | undefined) {
 	return !!session;

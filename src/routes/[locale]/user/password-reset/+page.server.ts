@@ -29,7 +29,9 @@ export const actions: Actions = {
 		if (passwordReset) {
 			sendMailPasswordLost(email, {
 				name: email,
-				password_reset_link: `${PUBLIC_BASE_URL}/${getLocale(url)}/user/password-reset/${passwordReset.code}`
+				password_reset_link: `${PUBLIC_BASE_URL}/${getLocale(url)}/user/password-reset/${
+					passwordReset.code
+				}`
 			});
 		}
 

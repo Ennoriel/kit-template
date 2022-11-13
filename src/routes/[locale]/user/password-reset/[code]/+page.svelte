@@ -10,7 +10,7 @@
 <form method="post">
 	<h1>{$LL.password_reset_title_password()}</h1>
 
-	<PasswordInput label="{$LL.password_reset_label_new_password()}" />
+	<PasswordInput label={$LL.password_reset_label_new_password()} />
 
 	{#if form?.error}
 		<p style:background="orange">{form.error}</p>

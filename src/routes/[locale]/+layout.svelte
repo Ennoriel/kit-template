@@ -36,7 +36,7 @@
 
 <style>
 	main {
-		min-height: calc(100vh - var(--header-height));
+		min-height: calc(100vh - var(--header-height) - var(--subheader-height, 0px));
 		max-width: 896px;
 		margin: auto;
 		padding: 32px 0;

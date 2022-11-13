@@ -14,11 +14,14 @@
 	import Fav from '$lib/components/svg/logo/Fav.svelte';
 	import FavLink from '$lib/components/atom/FavLink.svelte';
 	import type { UserF } from '$lib/types/user.type';
-	import { locale } from '$i18n/i18n-svelte';
+	import LL, { locale } from '$i18n/i18n-svelte';
+	import { locales } from '$i18n/i18n-util';
+	import { languages } from '$i18n/i18n-store';
 
 	export let session: UserF | undefined = undefined;
 
 	let burgerMenu: HTMLDivElement;
+	let pathname: string;
 
 	function click({ target }: MouseEvent) {
 		if ($isOpen && !burgerMenu.contains(target as Node)) $isOpen = false;
@@ -26,6 +29,10 @@
 
 	$: displayedRoutes = display(guard($ROUTES, session), { mobile: true });
 	$: activeRoute = getActiveRoute($page.url.pathname + $page.url.search, displayedRoutes);
+	$: {
+		const [, , ...u] = $page.url.pathname.split('/');
+		pathname = '/' + u.join('/');
+	}
 </script>
 
 <svelte:window on:click={click} />
@@ -85,6 +92,26 @@
 					{/if}
 				{/if}
 			{/each}
+			<p>
+				{$LL.global_language()}
+			</p>
+			<div class="sub-menu">
+				{#each locales as language}
+					{@const active = language === $locale}
+					<a
+						href="/{language}{pathname}"
+						on:click={() => ($isOpen = false)}
+						aria-current={active || undefined}
+						class:active
+					>
+						{#if active}
+							&gt;
+						{/if}
+						{languages[language]}
+					</a>
+				{/each}
+			</div>
+			<hr />
 		</div>
 	{/if}
 </nav>
@@ -188,5 +215,10 @@
 		margin-left: 16px;
 		font-size: 14px;
 		line-height: 1.75em;
+	}
+
+	p {
+		margin: 0;
+		line-height: 32px;
 	}
 </style>

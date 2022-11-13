@@ -7,16 +7,32 @@
 		guard,
 		ROUTES
 	} from '$lib/data/routes';
-	import { FormAction } from 'chyme-svelte';
+	import { Languages, FormAction } from 'chyme-svelte';
 	import { page } from '$app/stores';
 	import FavLink from '$lib/components/atom/FavLink.svelte';
 	import type { UserF } from '$lib/types/user.type';
 	import { locale } from '$i18n/i18n-svelte';
+	import { locales } from '$i18n/i18n-util';
+	import { slide } from 'svelte/transition';
+	import { languages } from '$i18n/i18n-store';
+	import { browser } from '$app/environment';
 
 	export let session: UserF | undefined = undefined;
 
+	let showLanguage = false;
+	let pathname: string;
+
 	$: displayedRoutes = display(guard($ROUTES, session), { mobile: false });
 	$: activeRoute = getActiveRoute($page.url.pathname + $page.url.search, displayedRoutes);
+	$: {
+		const [, , ...u] = $page.url.pathname.split('/');
+		pathname = '/' + u.join('/');
+	}
+	$: if (browser)
+		window.document.documentElement.style.setProperty(
+			'--subheader-height',
+			showLanguage ? '40px' : '0px'
+		);
 </script>
 
 <nav>
@@ -44,7 +60,35 @@
 				</a>
 			{/if}
 		{/each}
+		<a
+			href="/{$locale}/languages"
+			on:click|preventDefault={() => {
+				showLanguage = !showLanguage;
+				return false;
+			}}
+			style:padding="18px 12px"
+			style:line-height="24px"
+		>
+			<Languages strokeWidth={1} />
+		</a>
 	</span>
+	{#if showLanguage}
+		<span class="sub-menu" style:justify-content="end" in:slide>
+			{#each locales as language}
+				{@const active = language === $locale}
+				<a
+					href="/{language}{pathname}"
+					aria-current={active || undefined}
+					class:active
+					on:click={() => (showLanguage = false)}
+				>
+					<span>
+						{languages[language]}
+					</span>
+				</a>
+			{/each}
+		</span>
+	{/if}
 	{#if activeRoute?.subRoutes}
 		{@const activeSubRoute = getActiveRoute(
 			$page.url.pathname + $page.url.search,

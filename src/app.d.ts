@@ -3,8 +3,8 @@
 // and what to do when importing types
 declare namespace App {
 	interface Locals {
-		locale: Locales
-		LL: TranslationFunctions
+		locale: Locales;
+		LL: TranslationFunctions;
 	}
 	// interface Platform {}
 	// interface PrivateEnv {}

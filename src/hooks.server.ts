@@ -25,11 +25,11 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	const locale = lang as Locales;
-	const LL = L[locale]
+	const LL = L[locale];
 
 	// bind locale and translation functions to current request
-	event.locals.locale = locale
-	event.locals.LL = LL
+	event.locals.locale = locale;
+	event.locals.LL = LL;
 
 	return await resolve(event, { transformPageChunk: ({ html }) => html.replace('%lang%', lang) });
 };

@@ -7,12 +7,16 @@
 	export let form: ActionData;
 </script>
 
-<Seo title={$LL.password_reset_seo_title()} description={$LL.password_reset_seo_description()} {locales} />
+<Seo
+	title={$LL.password_reset_seo_title()}
+	description={$LL.password_reset_seo_description()}
+	{locales}
+/>
 
 <form method="post">
 	<h1>{$LL.password_reset_title()}</h1>
 
-	<EmailInput label={$LL.global_label_email()}/>
+	<EmailInput label={$LL.global_label_email()} />
 
 	{#if form?.error}
 		<p style:background="orange">{form.error}</p>

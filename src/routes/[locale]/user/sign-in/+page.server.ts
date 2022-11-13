@@ -27,8 +27,7 @@ export const actions: Actions = {
 
 		const dbUser = await getUser({ email });
 
-		if (dbUser)
-			return invalid(400, { error: $LL.sign_in_error_missing_data({email}) });
+		if (dbUser) return invalid(400, { error: $LL.sign_in_error_email_exists({ email }) });
 
 		const newUser = await createUser({
 			email,
@@ -39,7 +38,9 @@ export const actions: Actions = {
 		if (newUser.validationCode) {
 			sendMailConfirmAccount(email, {
 				name: email,
-				validation_link: `${PUBLIC_BASE_URL}/${getLocale(url)}/user/validate/${newUser.validationCode}`
+				validation_link: `${PUBLIC_BASE_URL}/${getLocale(url)}/user/validate/${
+					newUser.validationCode
+				}`
 			});
 		}
 
