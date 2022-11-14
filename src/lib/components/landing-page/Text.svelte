@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { Button, ButtonGroup } from 'chyme-svelte';
 	import Wrapper from './Wrapper.svelte';
+	import type { SvelteComponent } from 'svelte';
 
 	export let title: string;
 	export let description: string | undefined = undefined;
 	export let buttons: Array<{ label: string }> | undefined = undefined;
-	export let img: any | undefined = undefined;
+	export let img: typeof SvelteComponent | undefined = undefined;
 	export let theme: 'primary' | 'transparent' = 'primary';
 	export let reverse = false;
 </script>
