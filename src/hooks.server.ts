@@ -10,21 +10,18 @@ const L = i18n();
 export const handle: Handle = async ({ event, resolve }) => {
 	const [, lang] = event.url.pathname.split('/');
 
-	const safeRouteList = ['svg'];
+	const safeRouteList = ['robots.txt', 'svg', 'sitemap.xml'];
+	const safeRoute = safeRouteList.includes(lang);
 
 	// redirect to base locale if no locale slug was found or if locale is not supported
-	if (!lang || (!safeRouteList.includes(lang) && !isLocale(lang))) {
-		console.log('unknown lang -', lang, '-');
-
-		const locale = getPreferredLocale(event);
-
+	if (!lang || (!safeRoute && !isLocale(lang))) {
 		return new Response(null, {
 			status: 302,
-			headers: { Location: `/${locale}` }
+			headers: { Location: `/${getPreferredLocale(event)}` }
 		});
 	}
 
-	const locale = lang as Locales;
+	const locale = safeRoute ? 'fr' : (lang as Locales);
 	const LL = L[locale];
 
 	// bind locale and translation functions to current request
