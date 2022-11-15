@@ -4,10 +4,11 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+	$: article = data.article;
 </script>
 
-<Seo title="SKit - {data.title}" description={data.description} />
+<Seo title="SKit - {article.title}" description={article.description} />
 
-<h1>{data.title}</h1>
+<h1>{article.title}</h1>
 
-<Markdown source={data.content} />
+<Markdown source={article.content} />

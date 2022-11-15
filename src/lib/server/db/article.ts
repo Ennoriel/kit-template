@@ -1,6 +1,6 @@
 import db from '$lib/server/db/db';
 import type { Article } from '$lib/types/article.type';
-import type { Filter, FindOptions, WithId } from 'mongodb';
+import { ObjectId, type Filter, type FindOptions, type WithId } from 'mongodb';
 
 const defaultAttributes = { title: 1, url: 1, content: 1, description: 1 };
 type defaultAttributesType = keyof typeof defaultAttributes;
@@ -36,4 +36,10 @@ export async function getArticle<Field extends keyof Article = defaultAttributes
 
 export async function deleteArticle(query: Filter<Article> = {}) {
 	return await db.collection('articles').deleteOne(query);
+}
+
+export async function updateArticle(_id: string, article: Omit<Article, '_id'>) {
+	// TODO check uniqueness of url
+	await db.collection('articles').updateOne({ _id: new ObjectId(_id) }, { $set: article });
+	return { _id, ...article };
 }

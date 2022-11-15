@@ -22,9 +22,10 @@
 <ul>
 	{#each data.articles as article}
 		<li>
-			<a href="/blog/{article.url}">{article.title}</a>
+			<a href="/{$locale}/blog/{article.url}">{article.title}</a>
 			{#if data.user}
-				, <FormAction action="/blog/{article.url}?/delete">Delete</FormAction>
+				, <FormAction action="/{$locale}/blog/{article.url}?/delete">Delete</FormAction>
+				, <a href="/{$locale}/blog/{article.url}/edit">update</a>
 			{/if}
 		</li>
 	{/each}

@@ -1,23 +1,27 @@
 <script lang="ts">
-	import { Button, TextArea, TextInput } from 'chyme-svelte';
+	import { Button, InputHidden, TextArea, TextInput } from 'chyme-svelte';
 	import SvelteMarkdown from 'svelte-markdown';
+	import type { PageData } from './$types';
 
-	let content: string;
+	export let data: PageData;
+	$: article = data.article;
 </script>
 
 <!-- TODO seo -->
 
 <form method="post">
-	<TextInput label="Title" name="title" />
-	<TextInput label="Url" name="url" />
+	<InputHidden name="_id" value={article._id} />
+	<TextInput label="Title" name="title" bind:value={article.title} />
+	<TextInput label="Url" name="url" bind:value={article.url} />
+	<TextInput label="Description (meta)" name="description" bind:value={article.description} />
 	<div class="grid-2">
-		<TextArea label="Content" name="content" bind:value={content} />
+		<TextArea label="Content" name="content" bind:value={article.content} />
 		<div>
 			<p>Preview</p>
-			<SvelteMarkdown source={content} />
+			<SvelteMarkdown source={article.content} />
 		</div>
 	</div>
-	<Button type="submit">Create</Button>
+	<Button type="submit">Update</Button>
 </form>
 
 <style>
