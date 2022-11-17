@@ -28,7 +28,7 @@
 
 <Menu session={data.user} />
 
-<main>
+<main id="content">
 	<slot />
 </main>
 

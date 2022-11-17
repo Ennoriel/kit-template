@@ -10,7 +10,7 @@ export type Route = {
 	getLabel?: (session: UserF | undefined) => string;
 	guard?: (session: UserF | undefined) => boolean;
 	display?: (config?: { mobile: boolean }) => boolean;
-	class?: string;
+	class?: 'button' | 'a11y-link';
 	subRoutes?: Array<Route>;
 	prefetch?: boolean;
 	action?: boolean;
@@ -22,6 +22,12 @@ export type Spacer = {
 };
 
 export const ROUTES: Readable<Array<Route | Spacer>> = derived(LL, ($LL) => [
+	{
+		route: '#content',
+		label: $LL.menu_label_main_content(),
+		class: 'a11y-link',
+		display: (config?: { mobile: boolean }) => !config?.mobile
+	} as Route,
 	{
 		spacer: true
 	} as Spacer,

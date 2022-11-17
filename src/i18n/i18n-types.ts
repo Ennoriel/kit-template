@@ -295,6 +295,10 @@ type RootTranslation = {
 	 */
 	menu_label_logout: string
 	/**
+	 * G​o​ ​t​o​ ​m​a​i​n​ ​c​o​n​t​e​n​t
+	 */
+	menu_label_main_content: string
+	/**
 	 * S​e​t​t​i​n​g​s
 	 */
 	menu_label_settings: string
@@ -675,6 +679,10 @@ export type TranslationFunctions = {
 	 * Logout
 	 */
 	menu_label_logout: () => LocalizedString
+	/**
+	 * Go to main content
+	 */
+	menu_label_main_content: () => LocalizedString
 	/**
 	 * Settings
 	 */

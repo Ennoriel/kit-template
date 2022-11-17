@@ -196,6 +196,15 @@
 		transition: border-color 0.2s;
 	}
 
+	.a11y-link {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.a11y-link:focus-visible {
+		opacity: 1;
+	}
+
 	.active {
 		cursor: default;
 	}

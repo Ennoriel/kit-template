@@ -82,6 +82,7 @@ const en: BaseTranslation = {
 	menu_label_blog: 'Blog',
 	menu_label_login: 'Login',
 	menu_label_logout: 'Logout',
+	menu_label_main_content: 'Go to main content',
 	menu_label_settings: 'Settings',
 	menu_label_sign_in: 'Sign in',
 	password_action_submit: 'send me a reset link',

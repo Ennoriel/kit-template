@@ -82,6 +82,7 @@ const fr: Translation = {
 	menu_label_blog: 'Blog',
 	menu_label_login: 'Connexion',
 	menu_label_logout: 'Déconnexion',
+	menu_label_main_content: 'Aller au contenu',
 	menu_label_settings: 'Paramètres',
 	menu_label_sign_in: 'Créer son compte',
 	password_action_submit: 'Envoyer un lien de réinitialisation',
