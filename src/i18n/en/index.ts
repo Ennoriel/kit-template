@@ -23,6 +23,11 @@ const en: BaseTranslation = {
 	about_bloc6_description:
 		'6 years full stack developer, I have been working actively to automate & industrialize the way I work to garantee the best application possible quickly.',
 	about_bloc6_title: 'Do you want to benefit from my experience?',
+	about_link_to_thanks: 'See the open source projects I really care about and would like to thank for their work',
+	about_thanks_svelte: 'The most powerful framework on the market',
+	about_thanks_title: 'Special thanks to',
+	about_thanks_undraw: 'Images that fit your messaging, with automagically color customizing to match your brand',
+	about_thanks_lucide: 'Beautiful & consistent icon toolkit made by the community',
 	about_seo_description:
 		'About SKit, learn what you can get with the power of a thoughtful-code approach',
 	about_seo_title: 'SKit - about',

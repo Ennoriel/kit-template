@@ -12,7 +12,7 @@
 	import WebDevices from '$lib/components/svg/WebDevices.svelte';
 	import Contact from '$lib/components/landing-page/Contact.svelte';
 	import { Seo } from 'chyme-svelte';
-	import LL from '$i18n/i18n-svelte';
+	import LL, { locale } from '$i18n/i18n-svelte';
 	import { locales } from '$i18n/i18n-util';
 </script>
 
@@ -36,10 +36,6 @@
 	theme="transparent"
 	reverse
 />
-<!--
-	link to page/section template
-		- chyme / chyme-svelte: updates even after a year
--->
 
 <Numbers
 	data={[
@@ -57,7 +53,6 @@
 	img={WebDevices}
 	theme="transparent"
 />
-<!-- also eco design -->
 
 <Text title={$LL.about_bloc5_title()} theme="transparent" />
 
@@ -74,23 +69,6 @@
 	theme="transparent"
 />
 
-<!--
-	tech stack
-		- svelte / sveltekit
-		- testing: jest / playwright
-		- npm libraries
-		- S3
-		- mongodb
-		- github / github actions
-	and open to other technologies
--->
-
-<!--
-	examples:
-		- inkjs
-		- trouve ton sport
--->
-
 <Text
 	title={$LL.about_bloc6_title()}
 	description={$LL.about_bloc6_description()}
@@ -100,3 +78,5 @@
 />
 
 <Contact />
+
+<a href="/{$locale}/about/thanks" style:text-align="center" style:display="block">{$LL.about_link_to_thanks()}</a>

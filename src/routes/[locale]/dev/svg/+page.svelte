@@ -19,6 +19,7 @@
 	import Fake from '$lib/components/svg/Fake.svelte';
 	import FishBowl from '$lib/components/svg/FishBowl.svelte';
 	import WebBrowsing from '$lib/components/svg/WebBrowsing.svelte';
+	import Blooming from '$lib/components/svg/Blooming.svelte';
 </script>
 
 <div>
@@ -42,6 +43,7 @@
 	<Fake alt="" maxwidth={200} maxheight={200} />
 	<FishBowl alt="" maxwidth={200} maxheight={200} />
 	<WebBrowsing alt="" maxwidth={200} maxheight={200} />
+	<Blooming alt="" maxwidth={200} maxheight={200} />
 </div>
 
 <style>

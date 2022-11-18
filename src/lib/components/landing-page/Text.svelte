@@ -18,7 +18,7 @@
 		</div>
 	{/if}
 	<div class:left={img && reverse} class:right={img && !reverse}>
-		<h2>{title}</h2>
+		<h2 style:margin="{title && !description && !img ? "0" : undefined}">{title}</h2>
 		{#if description}
 			<p>{@html description}</p>
 		{/if}

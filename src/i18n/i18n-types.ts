@@ -87,6 +87,26 @@ type RootTranslation = {
 	 */
 	about_bloc6_title: string
 	/**
+	 * S​e​e​ ​t​h​e​ ​o​p​e​n​ ​s​o​u​r​c​e​ ​p​r​o​j​e​c​t​s​ ​I​ ​r​e​a​l​l​y​ ​c​a​r​e​ ​a​b​o​u​t​ ​a​n​d​ ​w​o​u​l​d​ ​l​i​k​e​ ​t​o​ ​t​h​a​n​k​ ​f​o​r​ ​t​h​e​i​r​ ​w​o​r​k
+	 */
+	about_link_to_thanks: string
+	/**
+	 * T​h​e​ ​m​o​s​t​ ​p​o​w​e​r​f​u​l​ ​f​r​a​m​e​w​o​r​k​ ​o​n​ ​t​h​e​ ​m​a​r​k​e​t
+	 */
+	about_thanks_svelte: string
+	/**
+	 * S​p​e​c​i​a​l​ ​t​h​a​n​k​s​ ​t​o
+	 */
+	about_thanks_title: string
+	/**
+	 * I​m​a​g​e​s​ ​t​h​a​t​ ​f​i​t​ ​y​o​u​r​ ​m​e​s​s​a​g​i​n​g​,​ ​w​i​t​h​ ​a​u​t​o​m​a​g​i​c​a​l​l​y​ ​c​o​l​o​r​ ​c​u​s​t​o​m​i​z​i​n​g​ ​t​o​ ​m​a​t​c​h​ ​y​o​u​r​ ​b​r​a​n​d
+	 */
+	about_thanks_undraw: string
+	/**
+	 * B​e​a​u​t​i​f​u​l​ ​&​ ​c​o​n​s​i​s​t​e​n​t​ ​i​c​o​n​ ​t​o​o​l​k​i​t​ ​m​a​d​e​ ​b​y​ ​t​h​e​ ​c​o​m​m​u​n​i​t​y
+	 */
+	about_thanks_lucide: string
+	/**
 	 * A​b​o​u​t​ ​S​K​i​t​,​ ​l​e​a​r​n​ ​w​h​a​t​ ​y​o​u​ ​c​a​n​ ​g​e​t​ ​w​i​t​h​ ​t​h​e​ ​p​o​w​e​r​ ​o​f​ ​a​ ​t​h​o​u​g​h​t​f​u​l​-​c​o​d​e​ ​a​p​p​r​o​a​c​h
 	 */
 	about_seo_description: string
@@ -471,6 +491,26 @@ export type TranslationFunctions = {
 	 * Do you want to benefit from my experience?
 	 */
 	about_bloc6_title: () => LocalizedString
+	/**
+	 * See the open source projects I really care about and would like to thank for their work
+	 */
+	about_link_to_thanks: () => LocalizedString
+	/**
+	 * The most powerful framework on the market
+	 */
+	about_thanks_svelte: () => LocalizedString
+	/**
+	 * Special thanks to
+	 */
+	about_thanks_title: () => LocalizedString
+	/**
+	 * Images that fit your messaging, with automagically color customizing to match your brand
+	 */
+	about_thanks_undraw: () => LocalizedString
+	/**
+	 * Beautiful & consistent icon toolkit made by the community
+	 */
+	about_thanks_lucide: () => LocalizedString
 	/**
 	 * About SKit, learn what you can get with the power of a thoughtful-code approach
 	 */

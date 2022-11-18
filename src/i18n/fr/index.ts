@@ -23,6 +23,11 @@ const fr: Translation = {
 	about_bloc6_description:
 		"Développeur avec 6 ans d'expérience, j'ai travaillé activement à automatiser & industriaser la façon dont je travaille de manière à to garantir la meilleur application possible rapidement.",
 	about_bloc6_title: 'Voullez-vous bénéficier de mon expertise ?',
+	about_link_to_thanks: 'Voir les projets open source que je soutiens fortement',
+	about_thanks_title: 'Merci à',
+	about_thanks_svelte: 'Le framework le plus performant sur le marché',
+	about_thanks_undraw: 'Des images qui correspondent à votre message, avec une personnalisation automatique des couleurs pour correspondre à votre marque',
+	about_thanks_lucide: "Un set d'icônes simples et élégantes répondant à tous les besoins courants d'illustration",
 	about_seo_description:
 		"A props de SKit, apprennez ce que vous pouvez faire avec la puissance d'une approche de développement réfléchie",
 	about_seo_title: 'SKit - A propos',
