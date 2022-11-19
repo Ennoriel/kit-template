@@ -31,6 +31,7 @@ specifiers:
   svelte-awesome-color-picker: ^2.1.3
   svelte-check: ^2.9.2
   svelte-markdown: ^0.2.3
+  svelte-notifications: ^0.9.98
   svelte-preprocess: ^4.10.7
   tslib: ^2.4.1
   typesafe-i18n: ^5.16.3
@@ -71,6 +72,7 @@ devDependencies:
   svelte-awesome-color-picker: 2.1.3
   svelte-check: 2.9.2_svelte@3.53.1
   svelte-markdown: 0.2.3_svelte@3.53.1
+  svelte-notifications: 0.9.98
   svelte-preprocess: 4.10.7_f4bsrsgtzvlkrtbz2ig7nipio4
   tslib: 2.4.1
   typescript: 4.8.4
@@ -3950,6 +3952,10 @@ packages:
       '@types/marked': 4.0.7
       marked: 4.2.2
       svelte: 3.53.1
+    dev: true
+
+  /svelte-notifications/0.9.98:
+    resolution: {integrity: sha512-w7/sqnQtEjM5uzjb3HfB50RE6KMuuWEQZxfBw86IykslHFJRcTuRvaUv503UMqY/LaioOu6w9mjJTO+ejiReSQ==}
     dev: true
 
   /svelte-preprocess/4.10.7_f4bsrsgtzvlkrtbz2ig7nipio4:

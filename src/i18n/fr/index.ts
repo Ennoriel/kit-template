@@ -76,7 +76,7 @@ const fr: Translation = {
 	home_title: 'Commencez à construire ce qui compte vraiment dès maintenant !',
 	layout_button_configure_theme: 'Configurez le thème',
 	login_action_submit: 'Connexion',
-	login_error_missing_parameters: "L'email et le mot de passe sont obligatoire",
+	login_error_missing_parameters: "L'email et le mot de passe sont obligatoires",
 	login_error_wrong_parameters: "L'email ou le mot de passe est invalide",
 	login_link_lost_password: 'Vous avez oublié votre mot de passe ?',
 	login_seo_description:

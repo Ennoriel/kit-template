@@ -3,8 +3,17 @@
 	import type { ActionData } from './$types';
 	import LL from '$i18n/i18n-svelte';
 	import { locales } from '$i18n/i18n-util';
+	import { enhance } from '$app/forms';
+	import { getNotificationsContext } from 'svelte-notifications';
+	import { makeError } from '$lib/utils/notifications';
+
+	const { addNotification } = getNotificationsContext();
 
 	export let form: ActionData;
+
+	$: if (form?.error) {
+		addNotification(makeError(form?.error))
+	}
 </script>
 
 <Seo
@@ -13,14 +22,10 @@
 	{locales}
 />
 
-<form method="post">
+<form method="post" use:enhance>
 	<h1>{$LL.password_reset_title()}</h1>
 
 	<EmailInput label={$LL.global_label_email()} />
-
-	{#if form?.error}
-		<p style:background="orange">{form.error}</p>
-	{/if}
 
 	<div>
 		<Button type="submit">{$LL.password_action_submit()}</Button>
