@@ -26,8 +26,10 @@ const fr: Translation = {
 	about_link_to_thanks: 'Voir les projets open source que je soutiens fortement',
 	about_thanks_title: 'Merci à',
 	about_thanks_svelte: 'Le framework le plus performant sur le marché',
-	about_thanks_undraw: 'Des images qui correspondent à votre message, avec une personnalisation automatique des couleurs pour correspondre à votre marque',
-	about_thanks_lucide: "Un set d'icônes simples et élégantes répondant à tous les besoins courants d'illustration",
+	about_thanks_undraw:
+		'Des images qui correspondent à votre message, avec une personnalisation automatique des couleurs pour correspondre à votre marque',
+	about_thanks_lucide:
+		"Un set d'icônes simples et élégantes répondant à tous les besoins courants d'illustration",
 	about_seo_description:
 		"A props de SKit, apprennez ce que vous pouvez faire avec la puissance d'une approche de développement réfléchie",
 	about_seo_title: 'SKit - A propos',
@@ -52,7 +54,9 @@ const fr: Translation = {
 	global_action_view_examples: 'Voir des exemples',
 	global_color_background_label: 'couleur de fond',
 	global_color_link_label: 'couleur des liens',
+	global_color_menu_light: 'menu clair',
 	global_color_primary_label: 'couleur primaire',
+	global_color_secondary_label: 'couleur secondaire',
 	global_color_text_label: 'couleur du texte',
 	global_error: 'Nous avons un problème !',
 	global_label_email: 'Email',

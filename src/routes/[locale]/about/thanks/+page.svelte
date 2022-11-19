@@ -19,4 +19,3 @@
 	maxItemLg={3}
 	theme="transparent"
 />
-

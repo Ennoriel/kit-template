@@ -1,22 +1,7 @@
-
 <script>
-    import Notifications from 'svelte-notifications';
-  </script>
-  
-  <Notifications>
-    <slot />
-  </Notifications>
+	import Notifications from 'svelte-notifications';
+</script>
 
-<style>
-    :global(.notifications .position-top-right) {
-        top: var(--header-height);
-        right: 0;
-        max-width: 500px;
-    }
-
-    @media(min-width: 768px) {
-        :global(.notifications .position-top-right .notification-content) {
-            width: 310px;
-        }
-    }
-</style>
+<Notifications>
+	<slot />
+</Notifications>

@@ -8,3 +8,15 @@
 h1 {
 	margin-top: 0;
 }
+
+.notifications .position-top-right {
+	top: var(--header-height);
+	right: 0;
+	max-width: 500px;
+}
+
+@media (min-width: 768px) {
+	.notifications .position-top-right .notification-content {
+		width: 310px;
+	}
+}

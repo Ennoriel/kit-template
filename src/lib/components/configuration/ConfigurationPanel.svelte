@@ -1,16 +1,26 @@
 <script lang="ts">
 	import ColorPicker from 'svelte-awesome-color-picker';
 	import { Button, Panel, ResponsiveWrapper } from 'chyme-svelte';
-	import { isOpen, bgColor, linkColor, primaryColor, textColor } from './store';
+	import {
+		isOpen,
+		bgColor,
+		linkColor,
+		primaryColor,
+		secondaryColor,
+		textColor,
+		menuStyle
+	} from './store';
 	import Brush from '../svg/icon/Brush.svelte';
 	import { browser } from '$app/environment';
 	import { locale } from '$i18n/i18n-svelte';
 	import LL from '$i18n/i18n-svelte';
 
 	function reset() {
+		$menuStyle = undefined;
 		$bgColor = '#f7f7fa';
 		$linkColor = '#ed1f3a';
 		$primaryColor = '#002395';
+		$secondaryColor = '#ed1f3a';
 		$textColor = '#333333';
 	}
 
@@ -19,6 +29,12 @@
 			method: 'POST',
 			body: JSON.stringify({ primaryColor: $primaryColor })
 		});
+	}
+
+	function onInput(e: Event) {
+		const checked = (<HTMLInputElement>e.target)?.checked;
+
+		$menuStyle = checked ? 'menu-light' : undefined;
 	}
 </script>
 
@@ -43,7 +59,24 @@
 </span>
 
 <Panel bind:open={$isOpen}>
+	<fieldset style:margin="16px">
+		<label>
+			<input
+				type="checkbox"
+				style:margin-left="8px"
+				style:margin-right="12px"
+				on:input={onInput}
+				checked={$menuStyle === 'menu-light'}
+			/>
+			{$LL.global_color_menu_light()}
+		</label>
+	</fieldset>
 	<ColorPicker bind:hex={$primaryColor} isAlpha={false} label={$LL.global_color_primary_label()} />
+	<ColorPicker
+		bind:hex={$secondaryColor}
+		isAlpha={false}
+		label={$LL.global_color_secondary_label()}
+	/>
 	<ColorPicker bind:hex={$bgColor} isAlpha={false} label={$LL.global_color_background_label()} />
 	<ColorPicker bind:hex={$textColor} isAlpha={false} label={$LL.global_color_text_label()} />
 	<ColorPicker bind:hex={$linkColor} isAlpha={false} label={$LL.global_color_link_label()} />

@@ -10,7 +10,7 @@ const L = i18n();
 export const handle: Handle = async ({ event, resolve }) => {
 	const [, lang] = event.url.pathname.split('/');
 
-	const safeRouteList = ['robots.txt', 'svg', 'sitemap.xml'];
+	const safeRouteList = ['img', 'robots.txt', 'svg', 'sitemap.xml'];
 	const safeRoute = safeRouteList.includes(lang);
 
 	// redirect to base locale if no locale slug was found or if locale is not supported

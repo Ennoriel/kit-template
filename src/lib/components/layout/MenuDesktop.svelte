@@ -73,7 +73,7 @@
 		</a>
 	</span>
 	{#if showLanguage}
-		<span class="sub-menu" style:justify-content="end" in:slide>
+		<span class="sub-menu" style:justify-content="end" transition:slide>
 			{#each locales as language}
 				{@const active = language === $locale}
 				<a
@@ -141,6 +141,12 @@
 		background-color: var(--secondary-color);
 	}
 
+	:global(.menu-light) .menu,
+	:global(.menu-light) .sub-menu {
+		background-color: var(--bg-color);
+		border-bottom: 1px solid #ddd;
+	}
+
 	a,
 	.menu :global(form) {
 		font-size: 16px;
@@ -173,6 +179,11 @@
 		padding: 0 16px;
 		border-radius: 8px;
 		outline-offset: -4px;
+	}
+
+	:global(.menu-light) a,
+	:global(.menu-light) .menu :global(button[type='submit']) {
+		color: var(--text-color);
 	}
 
 	.menu :global(button[type='submit']):hover {
@@ -219,8 +230,12 @@
 	}
 
 	.sub-menu .active span {
-		border-bottom: 2px solid white;
+		border-bottom: 1.5px solid white;
 		padding: 2px 0;
+	}
+
+	:global(.menu-light) .sub-menu .active span {
+		border-bottom: 1.5px solid var(--secondary-color);
 	}
 
 	.menu a:not(.active):hover {

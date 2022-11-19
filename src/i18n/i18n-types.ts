@@ -195,9 +195,17 @@ type RootTranslation = {
 	 */
 	global_color_link_label: string
 	/**
+	 * l​i​g​h​t​ ​m​e​n​u
+	 */
+	global_color_menu_light: string
+	/**
 	 * p​r​i​m​a​r​y​ ​c​o​l​o​r
 	 */
 	global_color_primary_label: string
+	/**
+	 * s​e​c​o​n​d​a​r​y​ ​c​o​l​o​r
+	 */
+	global_color_secondary_label: string
 	/**
 	 * t​e​x​t​ ​c​o​l​o​r
 	 */
@@ -600,9 +608,17 @@ export type TranslationFunctions = {
 	 */
 	global_color_link_label: () => LocalizedString
 	/**
+	 * light menu
+	 */
+	global_color_menu_light: () => LocalizedString
+	/**
 	 * primary color
 	 */
 	global_color_primary_label: () => LocalizedString
+	/**
+	 * secondary color
+	 */
+	global_color_secondary_label: () => LocalizedString
 	/**
 	 * text color
 	 */

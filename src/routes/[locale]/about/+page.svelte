@@ -79,4 +79,6 @@
 
 <Contact />
 
-<a href="/{$locale}/about/thanks" style:text-align="center" style:display="block">{$LL.about_link_to_thanks()}</a>
+<a href="/{$locale}/about/thanks" style:text-align="center" style:display="block"
+	>{$LL.about_link_to_thanks()}</a
+>

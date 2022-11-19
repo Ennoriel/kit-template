@@ -1,11 +1,13 @@
 <script lang="ts">
+	import { locale } from '$i18n/i18n-svelte';
 	import Fav from '../svg/logo/Fav.svelte';
 
 	export let size: 's' | 'm' = 'm';
+	export let bg = false;
 </script>
 
-<a href="/" on:click class="favicon">
-	<Fav maxheight={50} {size} />
+<a href="/{$locale}" on:click class="favicon">
+	<Fav maxheight={50} {size} {bg} />
 </a>
 
 <style>

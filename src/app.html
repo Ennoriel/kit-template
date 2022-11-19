@@ -5,32 +5,27 @@
 		<link rel="icon" href="/svg/favicon-s.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<script>
-			function isDark(color) {
-				return false;
-			}
-			var name = '--primary-color';
+			const properties = [
+				'--primary-color',
+				'--secondary-color',
+				'--bg-color',
+				'--link-color',
+				'--text-color'
+			];
 
-			var value = localStorage.getItem(name);
-			var dark = isDark(value);
-
-			document.documentElement.style.setProperty(name, value);
-			document.documentElement.classList.remove('dark', 'light');
-			document.documentElement.classList.add(dark ? 'dark' : 'light');
-
-			update();
-
-			// update if the theme was toggled in another tab
-			window.addEventListener('storage', (ev) => {
-				if (ev.key === name) {
-					value = ev.newValue;
-					document.documentElement.style.setProperty(name, value);
-					update();
-				}
+			properties.forEach((property) => {
+				var value = localStorage.getItem(property);
+				document.documentElement.style.setProperty(property, value);
 			});
 
-			function update() {
-				document.documentElement.style.setProperty(name, value);
-			}
+			const classes = ['menu-style'];
+
+			classes.forEach((className) => {
+				if (localStorage) {
+					var value = localStorage.getItem(className);
+					document.documentElement.classList.add(value);
+				}
+			});
 		</script>
 		%sveltekit.head%
 	</head>

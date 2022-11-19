@@ -11,7 +11,7 @@
 	export let form: ActionData;
 
 	$: if (form?.error) {
-		addNotification(makeError(form?.error))
+		addNotification(makeError(form?.error));
 	}
 </script>
 

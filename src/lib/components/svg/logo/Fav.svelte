@@ -58,10 +58,12 @@
 		stroke: var(--svg-color-bg);
 		fill: var(--svg-color-bg);
 	}
+	:global(.menu-light) .text,
 	.bg .text {
 		stroke: var(--svg-color-text);
 		fill: var(--svg-color-text);
 	}
+	:global(.menu-light) .background,
 	.bg .background {
 		stroke: var(--svg-color-bg);
 		fill: var(--svg-color-bg);
@@ -70,6 +72,7 @@
 		--svg-color-text: white;
 		--svg-color-bg: var(--primary-color);
 	}
+	:global(.menu-light) .wrapper,
 	.wrapper.bg {
 		--svg-color-text: var(--primary-color);
 		--svg-color-bg: transparent;
