@@ -2,7 +2,7 @@ import db from '$lib/server/db/db';
 import type { Article } from '$lib/types/article.type';
 import { ObjectId, type Filter, type FindOptions, type WithId } from 'mongodb';
 
-const defaultAttributes = { title: 1, url: 1, content: 1, description: 1 };
+const defaultAttributes = { title: 1, url: 1, content: 1, locale: 1, description: 1 };
 type defaultAttributesType = keyof typeof defaultAttributes;
 
 export async function createArticle(article: Article): Promise<Article> {

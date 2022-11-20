@@ -2,8 +2,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { PUBLIC_BASE_URL } from '$env/static/public';
 import type { Locales } from '$i18n/i18n-types';
 import { locales } from '$i18n/i18n-util';
-
-export const prerender = true;
+import { getArticles } from '$lib/server/db/article';
 
 /**
  * each entry in the form of:
@@ -63,16 +62,22 @@ const filters = [
 ];
 
 export const GET: RequestHandler = async () => {
+	const ttlInMin = 24 * 60;
+
 	const pages = getPages()
 		.filter((file) => !filters.some((filter) => file.includes(filter)))
 		.map((file) => /^\.\.\/(.*)\/\+page\.svelte$/.exec(file)?.[1])
-		.map((url) => getEntry(url, 0.5));
+		.map((url) => getEntry(url));
 
-	const sitemap = render(pages);
+	const articles = (await getArticles()).map(({ locale, url }) =>
+		getEntry(`/blog/${locale}/${url}`)
+	);
+
+	const sitemap = render([...pages, ...articles]);
 
 	return new Response(sitemap, {
 		headers: {
-			'Cache-Control': 'max-age=0, s-maxage=3600',
+			'Cache-Control': 'max-age=0, s-maxage=' + ttlInMin * 60,
 			'Content-Type': 'application/xml'
 		}
 	});

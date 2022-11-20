@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Button, InputHidden, TextArea, TextInput } from 'chyme-svelte';
+	import { languages } from '$i18n/i18n-store';
+	import { Button, InputHidden, Radio, TextArea, TextInput } from 'chyme-svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	import type { PageData } from './$types';
 
@@ -14,6 +15,12 @@
 	<TextInput label="Title" name="title" bind:value={article.title} />
 	<TextInput label="Url" name="url" bind:value={article.url} />
 	<TextInput label="Description (meta)" name="description" bind:value={article.description} />
+	<Radio
+		label="Langue"
+		options={Object.entries(languages).map(([value, label]) => ({ label, value }))}
+		name="locale"
+		bind:value={article.locale}
+	/>
 	<div class="grid-2">
 		<TextArea label="Content" name="content" bind:value={article.content} />
 		<div>

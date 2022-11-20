@@ -30,3 +30,9 @@
 		</li>
 	{/each}
 </ul>
+
+<ul>
+	<li>
+		<a href="/{$locale}/blog/rss.xml">Flux RSS</a>
+	</li>
+</ul>

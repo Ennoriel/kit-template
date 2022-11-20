@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { Button, Seo, TextArea, TextInput } from 'chyme-svelte';
+	import { Button, Radio, Seo, TextArea, TextInput } from 'chyme-svelte';
 	import Markdown from '$lib/components/atom/Markdown.svelte';
+	import { languages } from '$i18n/i18n-store';
 
 	let content: string;
 </script>
@@ -14,6 +15,11 @@
 	<TextInput label="Title" name="title" />
 	<TextInput label="Url" name="url" />
 	<TextInput label="Description (meta)" name="description" />
+	<Radio
+		label="Langue"
+		options={Object.entries(languages).map(([value, label]) => ({ label, value }))}
+		name="locale"
+	/>
 	<div class="grid-2">
 		<TextArea label="Content" name="content" bind:value={content} />
 		<div>
