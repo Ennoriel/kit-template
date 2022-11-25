@@ -137,6 +137,11 @@
 		z-index: 1002;
 	}
 
+	:global(.menu-light) #menu-bar {
+		background-color: var(--bg-color);
+		border-bottom: 1px solid #ddd;
+	}
+
 	button.open-menu {
 		height: calc(var(--header-height) - 25px);
 		width: calc(var(--header-height) - 25px);
@@ -151,9 +156,15 @@
 		color: white;
 	}
 
-	#menu-bar :focus-visible {
-		outline: 2px solid white;
-		outline-offset: 2px;
+	:global(.menu-light) button.open-menu {
+		background-color: var(--bg-color);
+		color: var(--primary-color);
+	}
+	#menu-bar :global(*) {
+		outline-color: white;
+	}
+	:global(.menu-light) #menu-bar :global(*) {
+		outline-color: var(--focus-color);
 	}
 
 	.menu {

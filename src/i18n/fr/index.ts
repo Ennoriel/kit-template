@@ -108,8 +108,8 @@ const fr: Translation = {
 		"Reset your SKit password, configurez votre application web, bénéficiez de la puissance d'une approche de développement réfléchie",
 	password_reset_seo_title: 'SKit - reset password',
 	password_reset_success: "C'est tout bon ! you may reset your password",
-	password_reset_title: 'Lost your password?',
-	password_reset_title_password: 'Reset your password',
+	password_reset_title: "Réinitialiser mon mot de passe",
+	password_reset_title_password: "Réinitialiser mon mot de passe",
 	settings_seo_description:
 		"Configurez votre compte SKit, configurez votre application web, bénéficiez de la puissance d'une approche de développement réfléchie",
 	settings_seo_title: 'SKit - Préférences utilisateur',

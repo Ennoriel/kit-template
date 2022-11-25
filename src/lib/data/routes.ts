@@ -128,7 +128,7 @@ export function getRouteLabel(route: Route | Spacer, session: UserF | undefined)
 export function getRouteUrl(locale: Locales, route: Route | Spacer) {
 	const onlyRoute = getOnlyRoutes([route])?.[0];
 	if (onlyRoute) {
-		return `/${locale}${onlyRoute.route}`;
+		return onlyRoute.route.startsWith('#') ? onlyRoute.route : `/${locale}${onlyRoute.route}`;
 	}
 	return '';
 }

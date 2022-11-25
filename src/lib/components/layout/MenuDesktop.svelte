@@ -122,13 +122,20 @@
 		width: 100%;
 		padding: 0 10px;
 		box-sizing: border-box;
-		--focus-color: white;
 
 		margin: 0;
 		list-style: none;
 
 		display: flex;
 		align-items: stretch;
+	}
+
+	.menu :global(*), .sub-menu :global(*) {
+		outline-color: white;
+	}
+
+	:global(.menu-light) .menu :global(*), :global(.menu-light) .sub-menu :global(*) {
+		outline-color: var(--focus-color);
 	}
 
 	.menu {
