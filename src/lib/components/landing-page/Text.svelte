@@ -4,24 +4,25 @@
 	import type { SvelteComponent } from 'svelte';
 
 	export let title: string;
-	export let description: string | undefined = undefined;
 	export let buttons: Array<{ label: string }> | undefined = undefined;
 	export let img: typeof SvelteComponent | undefined = undefined;
 	export let theme: 'primary' | 'transparent' = 'primary';
 	export let reverse = false;
+	export let tight = false;
+	export let center = false;
 </script>
 
-<Wrapper {theme} col={img ? 2 : undefined}>
+<Wrapper {theme} {tight} col={img ? 2 : undefined}>
 	{#if img}
 		<div class:right={reverse} class:left={!reverse}>
 			<svelte:component this={img} maxwidth={250} maxheight={250} />
 		</div>
 	{/if}
-	<div class:left={img && reverse} class:right={img && !reverse}>
-		<h2 style:margin={title && !description && !img ? '0' : undefined}>{title}</h2>
-		{#if description}
-			<p>{@html description}</p>
-		{/if}
+	<div class="content" class:left={img && reverse} class:right={img && !reverse} class:center>
+		<h2 style:margin={title && !$$slots && !img ? '0' : undefined}>{title}</h2>
+		<div style:margin="16px 0">
+			<slot />
+		</div>
 		{#if buttons && buttons.length}
 			<ButtonGroup justify="center">
 				{#each buttons as { label }, index}
@@ -51,11 +52,11 @@
 	}
 
 	h2,
-	p {
+	.center {
 		text-align: center;
 	}
 
-	p :global(br) {
+	.content :global(br) {
 		margin-bottom: 16px;
 	}
 </style>

@@ -239,23 +239,23 @@ type RootTranslation = {
 	 */
 	home_action_configuration: string
 	/**
-	 * <​a​ ​h​r​e​f​=​"​/​e​n​/​u​s​e​r​/​s​i​g​n​-​i​n​"​>​r​e​g​i​s​t​e​r​i​n​g​<​/​a​>​ ​&​ ​<​a​ ​h​r​e​f​=​"​/​e​n​/​u​s​e​r​/​l​o​g​i​n​"​>​a​u​t​h​e​n​t​i​c​a​t​i​o​n​<​/​a​>​ ​w​i​t​h​ ​e​m​a​i​l​ ​v​a​l​i​d​a​t​i​o​n
+	 * A​u​t​h​e​n​t​i​c​a​t​i​o​n
 	 */
 	home_feature_1: string
 	/**
-	 * d​a​t​a​b​a​s​e​ ​c​o​n​n​e​x​i​o​n
+	 * D​a​t​a​b​a​s​e
 	 */
 	home_feature_2: string
 	/**
-	 * S​3​ ​s​t​o​r​a​g​e​ ​f​o​r​ ​f​i​l​e​ ​&​ ​i​m​a​g​e​ ​u​p​l​o​a​d
+	 * F​i​l​e​ ​&​ ​i​m​a​g​e​ ​u​p​l​o​a​d
 	 */
 	home_feature_3: string
 	/**
-	 * b​u​i​l​t​ ​w​i​t​h​ ​S​E​O​ ​i​n​ ​m​i​n​d
+	 * S​E​O​ ​i​n​ ​m​i​n​d
 	 */
 	home_feature_4: string
 	/**
-	 * a​c​c​e​s​s​i​b​i​l​i​t​y​ ​f​r​i​e​n​d​l​y
+	 * A​c​c​e​s​s​i​b​i​l​i​t​y​ ​f​r​i​e​n​d​l​y
 	 */
 	home_feature_5: string
 	/**
@@ -263,13 +263,9 @@ type RootTranslation = {
 	 */
 	home_text_1: string
 	/**
-	 * G​o​o​d​ ​n​e​w​s​!​ ​I​ ​d​o​n​'​t​ ​l​i​k​e​ ​t​o​ ​r​e​b​u​i​l​d​ ​i​t​ ​f​o​r​ ​e​v​e​r​y​ ​c​l​i​e​n​t​.​ ​I​n​s​t​e​a​d​,​ ​I​ ​m​a​d​e​ ​a​ ​t​e​m​p​l​a​t​e​ ​w​i​t​h​ ​t​h​e​ ​1​0​ ​m​o​s​t​ ​c​o​m​m​o​n​ ​f​e​a​t​u​r​e​s​ ​u​s​e​d​ ​o​n​ ​t​h​e​ ​w​e​b​!
+	 * G​o​o​d​ ​n​e​w​s​!​ ​I​ ​d​o​n​'​t​ ​l​i​k​e​ ​t​o​ ​r​e​b​u​i​l​d​ ​i​t​ ​f​o​r​ ​e​v​e​r​y​ ​c​l​i​e​n​t​.​ ​I​n​s​t​e​a​d​,​ ​I​ ​m​a​d​e​ ​a​ ​t​e​m​p​l​a​t​e​ ​w​i​t​h​ ​t​h​e​ ​1​0​ ​m​o​s​t​ ​c​o​m​m​o​n​ ​f​e​a​t​u​r​e​s​ ​u​s​e​d​ ​o​n​ ​t​h​e​ ​w​e​b​:
 	 */
 	home_text_2: string
-	/**
-	 * I​t​ ​i​n​c​l​u​d​e​s​:
-	 */
-	home_text_3: string
 	/**
 	 * S​t​a​r​t​ ​b​u​i​l​d​i​n​g​ ​w​h​a​t​ ​m​a​t​t​e​r​s​ ​n​o​w
 	 */
@@ -291,7 +287,7 @@ type RootTranslation = {
 	 */
 	login_error_wrong_parameters: string
 	/**
-	 * L​o​s​t​ ​y​o​u​r​ ​p​a​s​s​s​w​o​r​d​?
+	 * L​o​s​t​ ​y​o​u​r​ ​p​a​s​s​w​o​r​d​?
 	 */
 	login_link_lost_password: string
 	/**
@@ -652,23 +648,23 @@ export type TranslationFunctions = {
 	 */
 	home_action_configuration: () => LocalizedString
 	/**
-	 * <a href="/en/user/sign-in">registering</a> & <a href="/en/user/login">authentication</a> with email validation
+	 * Authentication
 	 */
 	home_feature_1: () => LocalizedString
 	/**
-	 * database connexion
+	 * Database
 	 */
 	home_feature_2: () => LocalizedString
 	/**
-	 * S3 storage for file & image upload
+	 * File & image upload
 	 */
 	home_feature_3: () => LocalizedString
 	/**
-	 * built with SEO in mind
+	 * SEO in mind
 	 */
 	home_feature_4: () => LocalizedString
 	/**
-	 * accessibility friendly
+	 * Accessibility friendly
 	 */
 	home_feature_5: () => LocalizedString
 	/**
@@ -676,13 +672,9 @@ export type TranslationFunctions = {
 	 */
 	home_text_1: () => LocalizedString
 	/**
-	 * Good news! I don't like to rebuild it for every client. Instead, I made a template with the 10 most common features used on the web!
+	 * Good news! I don't like to rebuild it for every client. Instead, I made a template with the 10 most common features used on the web:
 	 */
 	home_text_2: () => LocalizedString
-	/**
-	 * It includes:
-	 */
-	home_text_3: () => LocalizedString
 	/**
 	 * Start building what matters now
 	 */
@@ -704,7 +696,7 @@ export type TranslationFunctions = {
 	 */
 	login_error_wrong_parameters: () => LocalizedString
 	/**
-	 * Lost your passsword?
+	 * Lost your password?
 	 */
 	login_link_lost_password: () => LocalizedString
 	/**

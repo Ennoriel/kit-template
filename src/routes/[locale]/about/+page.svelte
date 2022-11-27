@@ -20,22 +20,27 @@
 
 <Text
 	title={$LL.about_bloc1_title()}
-	description={$LL.about_bloc1_description()}
 	buttons={[
 		{ label: $LL.global_action_contact_me() },
 		{ label: $LL.global_action_view_examples() }
 	]}
 	img={AdvancedCustomization}
-/>
+	center
+	tight
+>
+	{$LL.about_bloc1_description()}
+</Text>
 
 <Text
 	title={$LL.about_bloc2_title()}
-	description={$LL.about_bloc2_description()}
 	buttons={[{ label: $LL.global_action_learn_more() }]}
 	img={VisionaryTechnology}
 	theme="transparent"
+	center
 	reverse
-/>
+>
+	{$LL.about_bloc2_description()}
+</Text>
 
 <Numbers
 	data={[
@@ -48,11 +53,13 @@
 
 <Text
 	title={$LL.about_bloc4_title()}
-	description={$LL.about_bloc4_description()}
 	buttons={[{ label: $LL.about_bloc4_action_learn_more() }]}
 	img={WebDevices}
 	theme="transparent"
-/>
+	center
+>
+	{@html $LL.about_bloc4_description()}
+</Text>
 
 <Text title={$LL.about_bloc5_title()} theme="transparent" />
 
@@ -71,11 +78,13 @@
 
 <Text
 	title={$LL.about_bloc6_title()}
-	description={$LL.about_bloc6_description()}
 	buttons={[{ label: $LL.global_action_contact_me() }]}
 	img={Freelancer}
 	theme="transparent"
-/>
+	center
+>
+	{$LL.about_bloc6_description()}
+</Text>
 
 <Contact />
 

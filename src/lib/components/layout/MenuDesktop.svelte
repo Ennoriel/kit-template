@@ -130,11 +130,13 @@
 		align-items: stretch;
 	}
 
-	.menu :global(*), .sub-menu :global(*) {
+	.menu :global(*),
+	.sub-menu :global(*) {
 		outline-color: white;
 	}
 
-	:global(.menu-light) .menu :global(*), :global(.menu-light) .sub-menu :global(*) {
+	:global(.menu-light) .menu :global(*),
+	:global(.menu-light) .sub-menu :global(*) {
 		outline-color: var(--focus-color);
 	}
 
