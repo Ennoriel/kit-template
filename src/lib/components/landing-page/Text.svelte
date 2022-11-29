@@ -4,6 +4,7 @@
 	import type { SvelteComponent } from 'svelte';
 
 	export let title: string;
+	export let header: 'h1' | 'h2' | 'h3' = 'h2';
 	export let buttons: Array<{ label: string }> | undefined = undefined;
 	export let img: typeof SvelteComponent | undefined = undefined;
 	export let theme: 'primary' | 'transparent' = 'primary';
@@ -19,7 +20,7 @@
 		</div>
 	{/if}
 	<div class="content" class:left={img && reverse} class:right={img && !reverse} class:center>
-		<h2 style:margin={title && !$$slots && !img ? '0' : undefined}>{title}</h2>
+		<svelte:element this="{header}" style:margin={title && !$$slots && !img ? '0' : undefined}>{title}</svelte:element>
 		<div style:margin="16px 0">
 			<slot />
 		</div>
@@ -51,7 +52,9 @@
 		gap: 8px;
 	}
 
-	h2,
+	.content :global(h1),
+	.content :global(h2),
+	.content :global(h3),
 	.center {
 		text-align: center;
 	}

@@ -311,6 +311,10 @@ type RootTranslation = {
 	 */
 	menu_label_blog: string
 	/**
+	 * C​l​i​e​n​t​s
+	 */
+	menu_label_clients: string
+	/**
 	 * L​o​g​i​n
 	 */
 	menu_label_login: string
@@ -322,6 +326,10 @@ type RootTranslation = {
 	 * G​o​ ​t​o​ ​m​a​i​n​ ​c​o​n​t​e​n​t
 	 */
 	menu_label_main_content: string
+	/**
+	 * S​e​r​v​i​c​e​s
+	 */
+	menu_label_services: string
 	/**
 	 * S​e​t​t​i​n​g​s
 	 */
@@ -720,6 +728,10 @@ export type TranslationFunctions = {
 	 */
 	menu_label_blog: () => LocalizedString
 	/**
+	 * Clients
+	 */
+	menu_label_clients: () => LocalizedString
+	/**
 	 * Login
 	 */
 	menu_label_login: () => LocalizedString
@@ -731,6 +743,10 @@ export type TranslationFunctions = {
 	 * Go to main content
 	 */
 	menu_label_main_content: () => LocalizedString
+	/**
+	 * Services
+	 */
+	menu_label_services: () => LocalizedString
 	/**
 	 * Settings
 	 */

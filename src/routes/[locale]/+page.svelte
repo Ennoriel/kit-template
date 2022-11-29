@@ -10,6 +10,7 @@
 
 <Text
 	title={$LL.home_title()}
+	header="h1"
 	buttons={[
 		{ label: $LL.global_action_contact_me() },
 		{ label: $LL.global_action_view_examples() }

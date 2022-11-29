@@ -31,6 +31,16 @@ export const ROUTES: Readable<Array<Route | Spacer>> = derived(LL, ($LL) => [
 	{
 		spacer: true
 	} as Spacer,
+	// {
+	// 	route: '/services',
+	// 	label: $LL.menu_label_services(),
+	// 	prefetch: true
+	// } as Route,
+	// {
+	// 	route: '/clients',
+	// 	label: $LL.menu_label_clients(),
+	// 	prefetch: true
+	// } as Route,
 	{
 		route: '/about',
 		label: $LL.menu_label_about(),
