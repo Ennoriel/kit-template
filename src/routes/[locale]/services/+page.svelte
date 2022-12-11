@@ -2,7 +2,8 @@
 	import Markdown from '$lib/components/atom/Markdown.svelte';
 </script>
 
-<Markdown source={`
+<Markdown
+	source={`
 # Ce que nous proposons
 
 ## Pour qui
@@ -34,4 +35,5 @@
 
   - Graphisme personnalisé (logo, site web)
 
-`} />
+`}
+/>

@@ -20,7 +20,9 @@
 		</div>
 	{/if}
 	<div class="content" class:left={img && reverse} class:right={img && !reverse} class:center>
-		<svelte:element this="{header}" style:margin={title && !$$slots && !img ? '0' : undefined}>{title}</svelte:element>
+		<svelte:element this={header} style:margin={title && !$$slots && !img ? '0' : undefined}
+			>{title}</svelte:element
+		>
 		<div style:margin="16px 0">
 			<slot />
 		</div>
