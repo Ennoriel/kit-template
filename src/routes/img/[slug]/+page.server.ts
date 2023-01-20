@@ -2,7 +2,7 @@ import { deleteImage } from '$lib/server/db/image';
 import { getUser } from '$lib/server/db/users';
 import { deleteS3 } from '$lib/server/s3/s3';
 import { verifyUser } from '$lib/utils/user';
-import { invalid, redirect } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = ({ params }) => {
@@ -15,12 +15,12 @@ export const actions: Actions = {
 
 		const user = await verifyUser(request);
 		if (!user) {
-			return invalid(400, { error: 'Vous devez être authentifié.' });
+			return fail(400, { error: 'Vous devez être authentifié.' });
 		}
 		const dbUser = await getUser({ email: user.email });
 
 		if (!dbUser?._id) {
-			return invalid(400, { error: 'Vous devez être authentifié.' });
+			return fail(400, { error: 'Vous devez être authentifié.' });
 		}
 
 		const path = params.slug;
@@ -31,7 +31,7 @@ export const actions: Actions = {
 			})
 			.catch((e) => {
 				console.log('error', e);
-				return invalid(400, {
+				return fail(400, {
 					error: "Un problème à eu lieu lors de la suppression de l'image."
 				});
 			});

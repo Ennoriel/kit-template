@@ -3,7 +3,7 @@ import { formDataToObject, randomString } from 'chyme';
 import { getUser, createUser } from '$lib/server/db/users';
 import { sendMailConfirmAccount } from '$lib/utils/mail';
 import { crypt } from '../user.utils';
-import { invalid, redirect } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import { PUBLIC_BASE_URL } from '$env/static/public';
 import { getLL, getLocale } from '$i18n/i18n-store';
 
@@ -22,12 +22,12 @@ export const actions: Actions = {
 		const { email, password } = user;
 
 		if (!email || !password) {
-			return invalid(400, { error: $LL.sign_in_error_missing_data() });
+			return fail(400, { error: $LL.sign_in_error_missing_data() });
 		}
 
 		const dbUser = await getUser({ email });
 
-		if (dbUser) return invalid(400, { error: $LL.sign_in_error_email_exists({ email }) });
+		if (dbUser) return fail(400, { error: $LL.sign_in_error_email_exists({ email }) });
 
 		const newUser = await createUser({
 			email,

@@ -3,7 +3,7 @@ import type { Actions } from './$types';
 import { formDataToObject } from 'chyme';
 import { getUser } from '$lib/server/db/users';
 import { validate } from '../user.utils';
-import { invalid, redirect } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import { getLL } from '$i18n/i18n-store';
 
 type User = {
@@ -21,13 +21,13 @@ export const actions: Actions = {
 		const { email, password } = user;
 
 		if (!email || !password) {
-			return invalid(400, { error: $LL.login_error_missing_parameters() });
+			return fail(400, { error: $LL.login_error_missing_parameters() });
 		}
 
 		const dbUser = await getUser({ email }, ['hash']);
 
 		if (!dbUser || !validate(password, dbUser.hash)) {
-			return invalid(400, { error: $LL.login_error_wrong_parameters() });
+			return fail(400, { error: $LL.login_error_wrong_parameters() });
 		}
 
 		const token = jsonwebtoken.sign(
