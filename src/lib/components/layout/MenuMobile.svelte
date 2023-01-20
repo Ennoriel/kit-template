@@ -60,7 +60,7 @@
 				{:else}
 					{@const active = activeRoute?.route === route.route}
 					<a
-						data-sveltekit-prefetch={route.prefetch ? '' : 'off'}
+						data-sveltekit-preload-data={route.prefetch ? 'hover' : 'tap'}
 						on:click={() => ($isOpen = false)}
 						href={getRouteUrl($locale, route)}
 						class:active
@@ -76,7 +76,6 @@
 							{#each route.subRoutes as subRoute}
 								{@const active = $page.url.pathname.indexOf(subRoute.route) >= 0}
 								<a
-									data-sveltekit-prefetch
 									on:click={() => ($isOpen = false)}
 									href={subRoute.route}
 									class:active

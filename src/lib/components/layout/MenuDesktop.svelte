@@ -48,7 +48,7 @@
 			{:else}
 				{@const active = activeRoute?.route === route.route}
 				<a
-					data-sveltekit-prefetch={route.prefetch ? '' : 'off'}
+					data-sveltekit-preload-data={route.prefetch ? 'hover' : 'tap'}
 					href={getRouteUrl($locale, route)}
 					class={route.class}
 					class:active
@@ -98,7 +98,7 @@
 			{#each activeRoute.subRoutes as route}
 				{@const active = activeSubRoute?.route === route.route}
 				<a
-					data-sveltekit-prefetch={route.prefetch ? '' : 'off'}
+					data-sveltekit-preload-data={route.prefetch ? 'hover' : 'tap'}
 					href={route.route}
 					class:active
 					aria-current={(active && 'page') || undefined}
