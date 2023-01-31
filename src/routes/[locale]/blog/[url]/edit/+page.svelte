@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { languages } from '$i18n/i18n-store';
-	import { Button, InputHidden, Radio, TextArea, TextInput } from 'chyme-svelte';
+	import { Button, InputHidden, Radio, Seo, TextArea, TextInput } from 'chyme-svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	import type { PageData } from './$types';
 
@@ -8,7 +8,10 @@
 	$: article = data.article;
 </script>
 
-<!-- TODO seo -->
+<Seo
+	title="SKit - new article"
+	description="Edit your SKit article, configure your web app, see the power of a thoughtful-code approach"
+/>
 
 <form method="post">
 	<InputHidden name="_id" value={article._id} />
@@ -36,5 +39,9 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 16px;
+	}
+	
+	form :global(textarea) {
+		text-align: left !important;
 	}
 </style>

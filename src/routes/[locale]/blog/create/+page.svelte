@@ -27,6 +27,9 @@
 			<Markdown source={content} />
 		</div>
 	</div>
+	<!--
+		titles should begin as ## / h2
+	-->
 	<Button type="submit">Create</Button>
 </form>
 
@@ -35,5 +38,9 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 16px;
+	}
+
+	form :global(textarea) {
+		text-align: left !important;
 	}
 </style>
